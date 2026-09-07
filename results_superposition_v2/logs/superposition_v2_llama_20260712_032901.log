@@ -1,0 +1,24 @@
+2026-07-12 03:29:01,634  INFO  ===== LLAMA  mode=ablation  device=cuda =====
+2026-07-12 03:29:01,636  INFO  [heads] union set = 23 heads; node overlap: GATING (H2): same heads matter base vs instruct
+2026-07-12 03:29:04,247  WARNING  Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2026-07-12 03:29:19,921  INFO  [model] meta-llama/Llama-3.2-3B: 28L × 24H d_model=3072
+2026-07-12 03:29:19,947  INFO  [prompts] llama/base: 764 rows  (source=survival:single_token_survival_llama32_3b_base.json)
+2026-07-12 03:30:44,017  INFO  [ablation] llama/base baseline CRR=0.6806 (known=0.6754)
+2026-07-12 03:31:48,895  INFO    [amplify_context       ] CRR=0.8115 ΔCRR=+0.1309 OK
+2026-07-12 03:32:53,768  INFO    [suppress_context      ] CRR=0.3691 ΔCRR=-0.3115 OK
+2026-07-12 03:33:58,641  INFO    [suppress_context_zero ] CRR=0.3586 ΔCRR=-0.3220 OK
+2026-07-12 03:35:03,542  INFO    [amplify_memory        ] CRR=0.6558 ΔCRR=-0.0249 OK
+2026-07-12 03:36:08,407  INFO    [suppress_memory       ] CRR=0.7657 ΔCRR=+0.0851 OK
+2026-07-12 03:37:13,268  INFO    [suppress_memory_zero  ] CRR=0.7186 ΔCRR=+0.0380 OK
+2026-07-12 03:37:13,323  INFO  [llama/base] done in 492s
+2026-07-12 03:37:13,728  WARNING  Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2026-07-12 03:37:28,834  INFO  [model] meta-llama/Llama-3.2-3B-Instruct: 28L × 24H d_model=3072
+2026-07-12 03:37:28,886  INFO  [prompts] llama/instruct: 764 rows  (source=survival:single_token_survival_llama32_3b_instruct.json)
+2026-07-12 03:38:52,997  INFO  [ablation] llama/instruct baseline CRR=0.2579 (known=0.2631)
+2026-07-12 03:39:57,950  INFO    [amplify_context       ] CRR=0.3442 ΔCRR=+0.0864 OK
+2026-07-12 03:41:02,902  INFO    [suppress_context      ] CRR=0.1649 ΔCRR=-0.0929 OK
+2026-07-12 03:42:07,852  INFO    [suppress_context_zero ] CRR=0.1662 ΔCRR=-0.0916 OK
+2026-07-12 03:43:12,837  INFO    [amplify_memory        ] CRR=0.1872 ΔCRR=-0.0707 OK
+2026-07-12 03:44:17,788  INFO    [suppress_memory       ] CRR=0.2997 ΔCRR=+0.0419 OK
+2026-07-12 03:45:22,746  INFO    [suppress_memory_zero  ] CRR=0.4306 ΔCRR=+0.1728 OK
+2026-07-12 03:45:22,833  INFO  [llama/instruct] done in 490s

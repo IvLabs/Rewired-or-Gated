@@ -1,0 +1,179 @@
+=== example 0 (domain=Athelete Sport) ===
+TEXT (conflict):  'Conor McGregor plays the sport of basketball. Conor McGregor plays the sport of'
+CLEAN_TEXT:       'Conor McGregor plays the sport of'
+memory_answer='mixed martial arts'  context_answer='basketball'
+L_main=16  L_base=18
+main tokens : ['<|endoftext|>', 'Con', 'or', ' McGregor', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Conor', ' McGregor', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Con', 'or', ' McGregor', ' plays', ' the', ' sport', ' of', ' mixed', ' martial', ' arts', '.', ' Conor', ' McGregor', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'Con', 'or', ' McGregor', ' plays', ' the', ' sport', ' of', '.', ' Conor', ' McGregor', ' plays', ' the', ' sport', ' of']
+
+=== example 1 (domain=Athelete Sport) ===
+TEXT (conflict):  'Lionel Messi plays the sport of basketball. Lionel Messi plays the sport of'
+CLEAN_TEXT:       'Lionel Messi plays the sport of'
+memory_answer='soccer'  context_answer='basketball'
+L_main=17  L_base=17
+main tokens : ['<|endoftext|>', 'L', 'ion', 'el', ' Messi', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Lionel', ' Messi', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'L', 'ion', 'el', ' Messi', ' plays', ' the', ' sport', ' of', ' soccer', '.', ' Lionel', ' Messi', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=9 + suffix_len=7 = 16): ['<|endoftext|>', 'L', 'ion', 'el', ' Messi', ' plays', ' the', ' sport', ' of', '.', ' Lionel', ' Messi', ' plays', ' the', ' sport', ' of']
+
+=== example 2 (domain=Athelete Sport) ===
+TEXT (conflict):  'Cristiano Ronaldo plays the sport of basketball. Cristiano Ronaldo plays the sport of'
+CLEAN_TEXT:       'Cristiano Ronaldo plays the sport of'
+memory_answer='soccer'  context_answer='basketball'
+L_main=18  L_base=18
+main tokens : ['<|endoftext|>', 'C', 'rist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Crist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'C', 'rist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of', ' soccer', '.', ' Crist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=9 + suffix_len=8 = 17): ['<|endoftext|>', 'C', 'rist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of', '.', ' Crist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+
+=== example 3 (domain=Athelete Sport) ===
+TEXT (conflict):  'Dak Prescott plays the sport of basketball. Dak Prescott plays the sport of'
+CLEAN_TEXT:       'Dak Prescott plays the sport of'
+memory_answer='football'  context_answer='basketball'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'D', 'ak', ' Prescott', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Dak', ' Prescott', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'D', 'ak', ' Prescott', ' plays', ' the', ' sport', ' of', ' football', '.', ' Dak', ' Prescott', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'D', 'ak', ' Prescott', ' plays', ' the', ' sport', ' of', '.', ' Dak', ' Prescott', ' plays', ' the', ' sport', ' of']
+
+=== example 4 (domain=Athelete Sport) ===
+TEXT (conflict):  'LeBron James plays the sport of football. LeBron James plays the sport of'
+CLEAN_TEXT:       'LeBron James plays the sport of'
+memory_answer='basketball'  context_answer='football'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'Le', 'Bron', ' James', ' plays', ' the', ' sport', ' of', ' football', '.', ' LeBron', ' James', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Le', 'Bron', ' James', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' LeBron', ' James', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'Le', 'Bron', ' James', ' plays', ' the', ' sport', ' of', '.', ' LeBron', ' James', ' plays', ' the', ' sport', ' of']
+
+=== example 5 (domain=Athelete Sport) ===
+TEXT (conflict):  'Neymar plays the sport of baseball. Neymar plays the sport of'
+CLEAN_TEXT:       'Neymar plays the sport of'
+memory_answer='soccer'  context_answer='baseball'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'N', 'ey', 'mar', ' plays', ' the', ' sport', ' of', ' baseball', '.', ' Ney', 'mar', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'N', 'ey', 'mar', ' plays', ' the', ' sport', ' of', ' soccer', '.', ' Ney', 'mar', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'N', 'ey', 'mar', ' plays', ' the', ' sport', ' of', '.', ' Ney', 'mar', ' plays', ' the', ' sport', ' of']
+
+=== example 6 (domain=Athelete Sport) ===
+TEXT (conflict):  'Roger Federer plays the sport of basketball. Roger Federer plays the sport of'
+CLEAN_TEXT:       'Roger Federer plays the sport of'
+memory_answer='tennis'  context_answer='basketball'
+L_main=17  L_base=17
+main tokens : ['<|endoftext|>', 'Roger', ' Fed', 'erer', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Roger', ' Fed', 'erer', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Roger', ' Fed', 'erer', ' plays', ' the', ' sport', ' of', ' tennis', '.', ' Roger', ' Fed', 'erer', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=8 = 16): ['<|endoftext|>', 'Roger', ' Fed', 'erer', ' plays', ' the', ' sport', ' of', '.', ' Roger', ' Fed', 'erer', ' plays', ' the', ' sport', ' of']
+
+=== example 7 (domain=Athelete Sport) ===
+TEXT (conflict):  'Lewis Hamilton plays the sport of baseball. Lewis Hamilton plays the sport of'
+CLEAN_TEXT:       'Lewis Hamilton plays the sport of'
+memory_answer='racing'  context_answer='baseball'
+L_main=15  L_base=15
+main tokens : ['<|endoftext|>', 'Lewis', ' Hamilton', ' plays', ' the', ' sport', ' of', ' baseball', '.', ' Lewis', ' Hamilton', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Lewis', ' Hamilton', ' plays', ' the', ' sport', ' of', ' racing', '.', ' Lewis', ' Hamilton', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=7 + suffix_len=7 = 14): ['<|endoftext|>', 'Lewis', ' Hamilton', ' plays', ' the', ' sport', ' of', '.', ' Lewis', ' Hamilton', ' plays', ' the', ' sport', ' of']
+
+=== example 8 (domain=Athelete Sport) ===
+TEXT (conflict):  'Tom Brady plays the sport of tennis. Tom Brady plays the sport of'
+CLEAN_TEXT:       'Tom Brady plays the sport of'
+memory_answer='football'  context_answer='tennis'
+L_main=15  L_base=15
+main tokens : ['<|endoftext|>', 'Tom', ' Brady', ' plays', ' the', ' sport', ' of', ' tennis', '.', ' Tom', ' Brady', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Tom', ' Brady', ' plays', ' the', ' sport', ' of', ' football', '.', ' Tom', ' Brady', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=7 + suffix_len=7 = 14): ['<|endoftext|>', 'Tom', ' Brady', ' plays', ' the', ' sport', ' of', '.', ' Tom', ' Brady', ' plays', ' the', ' sport', ' of']
+
+=== example 9 (domain=Athelete Sport) ===
+TEXT (conflict):  'Kevin Durant plays the sport of football. Kevin Durant plays the sport of'
+CLEAN_TEXT:       'Kevin Durant plays the sport of'
+memory_answer='basketball'  context_answer='football'
+L_main=15  L_base=15
+main tokens : ['<|endoftext|>', 'Kevin', ' Durant', ' plays', ' the', ' sport', ' of', ' football', '.', ' Kevin', ' Durant', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Kevin', ' Durant', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Kevin', ' Durant', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=7 + suffix_len=7 = 14): ['<|endoftext|>', 'Kevin', ' Durant', ' plays', ' the', ' sport', ' of', '.', ' Kevin', ' Durant', ' plays', ' the', ' sport', ' of']
+
+=== example 10 (domain=Athelete Sport) ===
+TEXT (conflict):  'Stephen Curry plays the sport of football. Stephen Curry plays the sport of'
+CLEAN_TEXT:       'Stephen Curry plays the sport of'
+memory_answer='basketball'  context_answer='football'
+L_main=15  L_base=15
+main tokens : ['<|endoftext|>', 'Stephen', ' Curry', ' plays', ' the', ' sport', ' of', ' football', '.', ' Stephen', ' Curry', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Stephen', ' Curry', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Stephen', ' Curry', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=7 + suffix_len=7 = 14): ['<|endoftext|>', 'Stephen', ' Curry', ' plays', ' the', ' sport', ' of', '.', ' Stephen', ' Curry', ' plays', ' the', ' sport', ' of']
+
+=== example 11 (domain=Athelete Sport) ===
+TEXT (conflict):  'Naomi Osaka plays the sport of racing. Naomi Osaka plays the sport of'
+CLEAN_TEXT:       'Naomi Osaka plays the sport of'
+memory_answer='tennis'  context_answer='racing'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'Na', 'omi', ' Osaka', ' plays', ' the', ' sport', ' of', ' racing', '.', ' Naomi', ' Osaka', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Na', 'omi', ' Osaka', ' plays', ' the', ' sport', ' of', ' tennis', '.', ' Naomi', ' Osaka', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'Na', 'omi', ' Osaka', ' plays', ' the', ' sport', ' of', '.', ' Naomi', ' Osaka', ' plays', ' the', ' sport', ' of']
+
+=== example 12 (domain=Athelete Sport) ===
+TEXT (conflict):  'Tiger Woods plays the sport of football. Tiger Woods plays the sport of'
+CLEAN_TEXT:       'Tiger Woods plays the sport of'
+memory_answer='golf'  context_answer='football'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'T', 'iger', ' Woods', ' plays', ' the', ' sport', ' of', ' football', '.', ' Tiger', ' Woods', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'T', 'iger', ' Woods', ' plays', ' the', ' sport', ' of', ' golf', '.', ' Tiger', ' Woods', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'T', 'iger', ' Woods', ' plays', ' the', ' sport', ' of', '.', ' Tiger', ' Woods', ' plays', ' the', ' sport', ' of']
+
+=== example 13 (domain=Athelete Sport) ===
+TEXT (conflict):  'Russell Westbrook plays the sport of baseball. Russell Westbrook plays the sport of'
+CLEAN_TEXT:       'Russell Westbrook plays the sport of'
+memory_answer='basketball'  context_answer='baseball'
+L_main=15  L_base=15
+main tokens : ['<|endoftext|>', 'Russell', ' Westbrook', ' plays', ' the', ' sport', ' of', ' baseball', '.', ' Russell', ' Westbrook', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Russell', ' Westbrook', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Russell', ' Westbrook', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=7 + suffix_len=7 = 14): ['<|endoftext|>', 'Russell', ' Westbrook', ' plays', ' the', ' sport', ' of', '.', ' Russell', ' Westbrook', ' plays', ' the', ' sport', ' of']
+
+=== example 14 (domain=Athelete Sport) ===
+TEXT (conflict):  'Patrick Mahomes plays the sport of baseball. Patrick Mahomes plays the sport of'
+CLEAN_TEXT:       'Patrick Mahomes plays the sport of'
+memory_answer='football'  context_answer='baseball'
+L_main=17  L_base=17
+main tokens : ['<|endoftext|>', 'Patrick', ' Mah', 'omes', ' plays', ' the', ' sport', ' of', ' baseball', '.', ' Patrick', ' Mah', 'omes', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Patrick', ' Mah', 'omes', ' plays', ' the', ' sport', ' of', ' football', '.', ' Patrick', ' Mah', 'omes', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=8 = 16): ['<|endoftext|>', 'Patrick', ' Mah', 'omes', ' plays', ' the', ' sport', ' of', '.', ' Patrick', ' Mah', 'omes', ' plays', ' the', ' sport', ' of']
+
+=== example 15 (domain=Athelete Sport) ===
+TEXT (conflict):  'James Harden plays the sport of golf. James Harden plays the sport of'
+CLEAN_TEXT:       'James Harden plays the sport of'
+memory_answer='basketball'  context_answer='golf'
+L_main=15  L_base=15
+main tokens : ['<|endoftext|>', 'James', ' Harden', ' plays', ' the', ' sport', ' of', ' golf', '.', ' James', ' Harden', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'James', ' Harden', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' James', ' Harden', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=7 + suffix_len=7 = 14): ['<|endoftext|>', 'James', ' Harden', ' plays', ' the', ' sport', ' of', '.', ' James', ' Harden', ' plays', ' the', ' sport', ' of']
+
+=== example 16 (domain=Athelete Sport) ===
+TEXT (conflict):  'David Bakhtiari plays the sport of tennis. David Bakhtiari plays the sport of'
+CLEAN_TEXT:       'David Bakhtiari plays the sport of'
+memory_answer='football'  context_answer='tennis'
+L_main=21  L_base=21
+main tokens : ['<|endoftext|>', 'David', ' Bak', 'ht', 'i', 'ari', ' plays', ' the', ' sport', ' of', ' tennis', '.', ' David', ' Bak', 'ht', 'i', 'ari', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'David', ' Bak', 'ht', 'i', 'ari', ' plays', ' the', ' sport', ' of', ' football', '.', ' David', ' Bak', 'ht', 'i', 'ari', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=10 + suffix_len=10 = 20): ['<|endoftext|>', 'David', ' Bak', 'ht', 'i', 'ari', ' plays', ' the', ' sport', ' of', '.', ' David', ' Bak', 'ht', 'i', 'ari', ' plays', ' the', ' sport', ' of']
+
+=== example 17 (domain=Athelete Sport) ===
+TEXT (conflict):  'Ronnie Stanley plays the sport of baseball. Ronnie Stanley plays the sport of'
+CLEAN_TEXT:       'Ronnie Stanley plays the sport of'
+memory_answer='football'  context_answer='baseball'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'Ron', 'nie', ' Stanley', ' plays', ' the', ' sport', ' of', ' baseball', '.', ' Ronnie', ' Stanley', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Ron', 'nie', ' Stanley', ' plays', ' the', ' sport', ' of', ' football', '.', ' Ronnie', ' Stanley', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'Ron', 'nie', ' Stanley', ' plays', ' the', ' sport', ' of', '.', ' Ronnie', ' Stanley', ' plays', ' the', ' sport', ' of']
+
+=== example 18 (domain=Athelete Sport) ===
+TEXT (conflict):  'Giannis Antetokounmpo plays the sport of tennis. Giannis Antetokounmpo plays the sport of'
+CLEAN_TEXT:       'Giannis Antetokounmpo plays the sport of'
+memory_answer='basketball'  context_answer='tennis'
+L_main=28  L_base=28
+main tokens : ['<|endoftext|>', 'G', 'ian', 'nis', ' Ant', 'et', 'ok', 'oun', 'mp', 'o', ' plays', ' the', ' sport', ' of', ' tennis', '.', ' Gian', 'nis', ' Ant', 'et', 'ok', 'oun', 'mp', 'o', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'G', 'ian', 'nis', ' Ant', 'et', 'ok', 'oun', 'mp', 'o', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Gian', 'nis', ' Ant', 'et', 'ok', 'oun', 'mp', 'o', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=14 + suffix_len=13 = 27): ['<|endoftext|>', 'G', 'ian', 'nis', ' Ant', 'et', 'ok', 'oun', 'mp', 'o', ' plays', ' the', ' sport', ' of', '.', ' Gian', 'nis', ' Ant', 'et', 'ok', 'oun', 'mp', 'o', ' plays', ' the', ' sport', ' of']
+
+=== example 19 (domain=Athelete Sport) ===
+TEXT (conflict):  'Dustin Johnson plays the sport of boxing. Dustin Johnson plays the sport of'
+CLEAN_TEXT:       'Dustin Johnson plays the sport of'
+memory_answer='golf'  context_answer='boxing'
+L_main=16  L_base=16
+main tokens : ['<|endoftext|>', 'Dust', 'in', ' Johnson', ' plays', ' the', ' sport', ' of', ' boxing', '.', ' Dustin', ' Johnson', ' plays', ' the', ' sport', ' of']
+base tokens : ['<|endoftext|>', 'Dust', 'in', ' Johnson', ' plays', ' the', ' sport', ' of', ' golf', '.', ' Dustin', ' Johnson', ' plays', ' the', ' sport', ' of']
+REAL window used by score_prompt (prefix_len=8 + suffix_len=7 = 15): ['<|endoftext|>', 'Dust', 'in', ' Johnson', ' plays', ' the', ' sport', ' of', '.', ' Dustin', ' Johnson', ' plays', ' the', ' sport', ' of']

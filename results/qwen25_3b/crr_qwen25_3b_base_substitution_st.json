@@ -1,0 +1,21 @@
+{
+  "_provenance": {
+    "contrast": "none_single_run",
+    "dataset": "single_token_st",
+    "n_used": 764,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "substitution",
+    "model_tag": "qwen25_3b_base"
+  },
+  "model": "qwen25_3b_base",
+  "prompt_type": "substitution",
+  "crr_behavioral": {
+    "crr": 0.6452879581151832,
+    "context": 493,
+    "memory": 269,
+    "neither": 2,
+    "total": 764
+  },
+  "crr_logprob": 0.6518324607329843
+}

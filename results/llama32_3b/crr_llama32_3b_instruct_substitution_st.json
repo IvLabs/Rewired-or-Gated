@@ -1,0 +1,21 @@
+{
+  "_provenance": {
+    "contrast": "none_single_run",
+    "dataset": "single_token_st",
+    "n_used": 764,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "substitution",
+    "model_tag": "llama32_3b_instruct"
+  },
+  "model": "llama32_3b_instruct",
+  "prompt_type": "substitution",
+  "crr_behavioral": {
+    "crr": 0.2630890052356021,
+    "context": 201,
+    "memory": 535,
+    "neither": 28,
+    "total": 764
+  },
+  "crr_logprob": 0.28403141361256545
+}

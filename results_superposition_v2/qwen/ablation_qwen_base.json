@@ -1,0 +1,83 @@
+{
+  "family": "qwen",
+  "variant": "base",
+  "topk": 5,
+  "baseline_crr": 0.650523560209424,
+  "known_baseline_crr": 0.6453,
+  "ctx_heads": [
+    "L33H15",
+    "L32H7",
+    "L32H3",
+    "L31H5",
+    "L33H3"
+  ],
+  "mem_heads": [
+    "L31H2",
+    "L33H13",
+    "L34H10",
+    "L32H5",
+    "L26H7"
+  ],
+  "conditions": {
+    "amplify_context": {
+      "ablation_mode": "amplify",
+      "crr": 0.774869,
+      "delta_crr": 0.124346,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR>0",
+      "n_context": 592,
+      "n_memory": 168,
+      "n_neither": 4
+    },
+    "suppress_context": {
+      "ablation_mode": "mean",
+      "crr": 0.239529,
+      "delta_crr": -0.410995,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR<0",
+      "n_context": 183,
+      "n_memory": 503,
+      "n_neither": 78
+    },
+    "suppress_context_zero": {
+      "ablation_mode": "zero",
+      "crr": 0.265707,
+      "delta_crr": -0.384817,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR<0 (harsher)",
+      "n_context": 203,
+      "n_memory": 491,
+      "n_neither": 70
+    },
+    "amplify_memory": {
+      "ablation_mode": "amplify",
+      "crr": 0.354712,
+      "delta_crr": -0.295812,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR<0",
+      "n_context": 271,
+      "n_memory": 441,
+      "n_neither": 52
+    },
+    "suppress_memory": {
+      "ablation_mode": "mean",
+      "crr": 0.840314,
+      "delta_crr": 0.189791,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR>0  [Merge B: validates LDS]",
+      "n_context": 642,
+      "n_memory": 119,
+      "n_neither": 3
+    },
+    "suppress_memory_zero": {
+      "ablation_mode": "zero",
+      "crr": 0.890052,
+      "delta_crr": 0.239529,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR>0 (harsher)",
+      "n_context": 680,
+      "n_memory": 82,
+      "n_neither": 2
+    }
+  }
+}

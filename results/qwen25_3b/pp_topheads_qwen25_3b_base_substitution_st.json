@@ -1,0 +1,234 @@
+{
+  "_provenance": {
+    "contrast": "inplace_swap",
+    "dataset": "single_token_st",
+    "n_used": 745,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "substitution",
+    "model_tag": "qwen25_3b_base"
+  },
+  "model": "qwen25_3b_base",
+  "prompt_type": "substitution",
+  "k": 10,
+  "source_eap_file": "/root/BBNLP/results/qwen25_3b/lds2_qwen25_3b_base_substitution_st_eap.json",
+  "selected_heads": [
+    {
+      "layer": 33,
+      "head": 15,
+      "eap_score": 1.327190379197685,
+      "eap_rank": 1,
+      "gradact_score": 0.6072836671200098,
+      "direction": "context",
+      "pp_score": 0.2482045907143444
+    },
+    {
+      "layer": 32,
+      "head": 7,
+      "eap_score": 1.2974144101767016,
+      "eap_rank": 2,
+      "gradact_score": 0.4678523677805955,
+      "direction": "context",
+      "pp_score": 0.22845199314714806
+    },
+    {
+      "layer": 32,
+      "head": 3,
+      "eap_score": 0.9538475156454516,
+      "eap_rank": 3,
+      "gradact_score": 0.3177753069013825,
+      "direction": "context",
+      "pp_score": 0.0956909214537861
+    },
+    {
+      "layer": 31,
+      "head": 5,
+      "eap_score": 0.6012838473494765,
+      "eap_rank": 4,
+      "gradact_score": 0.2535544190731348,
+      "direction": "context",
+      "pp_score": 0.10766470313901909
+    },
+    {
+      "layer": 33,
+      "head": 3,
+      "eap_score": 0.49379392693804197,
+      "eap_rank": 5,
+      "gradact_score": 0.18800434454573386,
+      "direction": "context",
+      "pp_score": 0.05499569728289082
+    },
+    {
+      "layer": 32,
+      "head": 13,
+      "eap_score": 0.4748857907599804,
+      "eap_rank": 6,
+      "gradact_score": 0.158776556634154,
+      "direction": "context",
+      "pp_score": 0.04182223890985084
+    },
+    {
+      "layer": 33,
+      "head": 1,
+      "eap_score": 0.4716714214904146,
+      "eap_rank": 7,
+      "gradact_score": 0.2137002445640364,
+      "direction": "context",
+      "pp_score": 0.06971176616091528
+    },
+    {
+      "layer": 27,
+      "head": 10,
+      "eap_score": 0.29952699601338173,
+      "eap_rank": 8,
+      "gradact_score": -0.1008914865124288,
+      "direction": "context",
+      "pp_score": 0.05581309758784868
+    },
+    {
+      "layer": 31,
+      "head": 1,
+      "eap_score": 0.2785656065216863,
+      "eap_rank": 9,
+      "gradact_score": -0.17905396940820503,
+      "direction": "context",
+      "pp_score": 0.03904936700450413
+    },
+    {
+      "layer": 27,
+      "head": 9,
+      "eap_score": 0.24291108915318993,
+      "eap_rank": 10,
+      "gradact_score": 0.049333613892500315,
+      "direction": "context",
+      "pp_score": 0.055117987352903415
+    },
+    {
+      "layer": 31,
+      "head": 2,
+      "eap_score": -1.3386460548920156,
+      "eap_rank": 576,
+      "gradact_score": -0.44729742080129253,
+      "direction": "memory",
+      "pp_score": -0.26046711142889395
+    },
+    {
+      "layer": 33,
+      "head": 13,
+      "eap_score": -1.188618205604753,
+      "eap_rank": 575,
+      "gradact_score": -0.5338512777658033,
+      "direction": "memory",
+      "pp_score": -0.24247137558754422
+    },
+    {
+      "layer": 34,
+      "head": 10,
+      "eap_score": -0.44909251547608703,
+      "eap_rank": 574,
+      "gradact_score": -0.1250375827569612,
+      "direction": "memory",
+      "pp_score": -0.07255503706973643
+    },
+    {
+      "layer": 32,
+      "head": 5,
+      "eap_score": -0.20200760327084527,
+      "eap_rank": 573,
+      "gradact_score": -0.10213526818140639,
+      "direction": "memory",
+      "pp_score": -0.038324494792310926
+    },
+    {
+      "layer": 26,
+      "head": 7,
+      "eap_score": -0.15015984580154818,
+      "eap_rank": 572,
+      "gradact_score": -0.09402481798102094,
+      "direction": "memory",
+      "pp_score": -0.08752255927713598
+    },
+    {
+      "layer": 28,
+      "head": 15,
+      "eap_score": -0.14703956199566107,
+      "eap_rank": 571,
+      "gradact_score": 0.03805404932711137,
+      "direction": "memory",
+      "pp_score": -0.03352745568426016
+    },
+    {
+      "layer": 20,
+      "head": 5,
+      "eap_score": -0.142500080987421,
+      "eap_rank": 570,
+      "gradact_score": -0.0526141071818886,
+      "direction": "memory",
+      "pp_score": -0.008190738507908074
+    },
+    {
+      "layer": 32,
+      "head": 11,
+      "eap_score": -0.09906293709240659,
+      "eap_rank": 569,
+      "gradact_score": -0.060549701071534484,
+      "direction": "memory",
+      "pp_score": -0.017491676539711377
+    },
+    {
+      "layer": 33,
+      "head": 9,
+      "eap_score": -0.07768109581233319,
+      "eap_rank": 568,
+      "gradact_score": -0.05319202149101577,
+      "direction": "memory",
+      "pp_score": -0.01145710310040394
+    },
+    {
+      "layer": 34,
+      "head": 8,
+      "eap_score": -0.0761000766804081,
+      "eap_rank": 567,
+      "gradact_score": -0.0031828680587688667,
+      "direction": "memory",
+      "pp_score": -0.00817143712967614
+    }
+  ],
+  "head_scores": {
+    "33_15": 0.2482045907143444,
+    "32_7": 0.22845199314714806,
+    "32_3": 0.0956909214537861,
+    "31_5": 0.10766470313901909,
+    "33_3": 0.05499569728289082,
+    "32_13": 0.04182223890985084,
+    "33_1": 0.06971176616091528,
+    "27_10": 0.05581309758784868,
+    "31_1": 0.03904936700450413,
+    "27_9": 0.055117987352903415,
+    "31_2": -0.26046711142889395,
+    "33_13": -0.24247137558754422,
+    "34_10": -0.07255503706973643,
+    "32_5": -0.038324494792310926,
+    "26_7": -0.08752255927713598,
+    "28_15": -0.03352745568426016,
+    "20_5": -0.008190738507908074,
+    "32_11": -0.017491676539711377,
+    "33_9": -0.01145710310040394,
+    "34_8": -0.00817143712967614
+  },
+  "n_prompts_input": 764,
+  "n_prompts_used": 745,
+  "noise_floor": {
+    "identity_patch_max_abs": 0.09375,
+    "random_pair_p95": 0.27777102130167275
+  },
+  "meta": {
+    "n_heads_scored": 20,
+    "n_skipped_degenerate_margin": 19,
+    "n_skipped_length_mismatch": 0,
+    "n_skipped_no_swap": 0,
+    "n_skipped_error": 0,
+    "n_skipped_clean_neither": 0,
+    "torch_version": "2.13.0+cu130"
+  }
+}

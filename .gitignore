@@ -1,0 +1,40 @@
+# secrets
+.env
+.env.local
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# claude-code artifacts
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# scratch / drafts
+scratch/
+.superpowers/
+
+# model + dataset caches
+*.pth
+*.pt
+*.bin
+.cache/
+
+# PP crash-resume checkpoints
+*.checkpoint.json
+*.checkpoint.json.tmp
+
+# large runtime outputs — too big for git
+results/*/single_token_survival_*.json
+results_superposition/logs/*.log
+
+# OS junk
+.DS_Store
+Thumbs.db

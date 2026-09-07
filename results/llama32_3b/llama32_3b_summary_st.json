@@ -1,0 +1,641 @@
+{
+  "experiment": "Llama-3.2-3B EAP-screen -> PP-verify",
+  "method": "multi-token mean log-prob",
+  "models": {
+    "llama32_3b_base": {
+      "model_id": "meta-llama/Llama-3.2-3B",
+      "cells": {
+        "substitution": {
+          "spearman_rho": 0.6241,
+          "p_value": 0.424483,
+          "sign_agreement": "16/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 764,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.01953125,
+            "random_pair_p95": 0.27333959899749377
+          },
+          "top_heads": [
+            {
+              "head": "L24H15",
+              "direction": "context",
+              "eap_score": 1.0341,
+              "eap_rank": 1,
+              "pp_score": 0.111
+            },
+            {
+              "head": "L14H22",
+              "direction": "context",
+              "eap_score": 0.6998,
+              "eap_rank": 2,
+              "pp_score": 0.1032
+            },
+            {
+              "head": "L26H9",
+              "direction": "context",
+              "eap_score": 0.674,
+              "eap_rank": 3,
+              "pp_score": 0.1025
+            },
+            {
+              "head": "L21H20",
+              "direction": "context",
+              "eap_score": 0.549,
+              "eap_rank": 4,
+              "pp_score": 0.0517
+            },
+            {
+              "head": "L21H2",
+              "direction": "context",
+              "eap_score": 0.5448,
+              "eap_rank": 5,
+              "pp_score": 0.0387
+            },
+            {
+              "head": "L14H2",
+              "direction": "context",
+              "eap_score": 0.3969,
+              "eap_rank": 6,
+              "pp_score": 0.0666
+            },
+            {
+              "head": "L27H5",
+              "direction": "context",
+              "eap_score": 0.3596,
+              "eap_rank": 7,
+              "pp_score": 0.0447
+            },
+            {
+              "head": "L24H4",
+              "direction": "context",
+              "eap_score": 0.3484,
+              "eap_rank": 8,
+              "pp_score": 0.0388
+            },
+            {
+              "head": "L19H11",
+              "direction": "context",
+              "eap_score": 0.34,
+              "eap_rank": 9,
+              "pp_score": 0.0461
+            },
+            {
+              "head": "L27H15",
+              "direction": "context",
+              "eap_score": 0.2789,
+              "eap_rank": 10,
+              "pp_score": 0.0326
+            },
+            {
+              "head": "L24H16",
+              "direction": "memory",
+              "eap_score": -0.6246,
+              "eap_rank": 672,
+              "pp_score": -0.0652
+            },
+            {
+              "head": "L24H1",
+              "direction": "memory",
+              "eap_score": -0.4378,
+              "eap_rank": 671,
+              "pp_score": -0.0587
+            },
+            {
+              "head": "L14H18",
+              "direction": "memory",
+              "eap_score": -0.4157,
+              "eap_rank": 670,
+              "pp_score": -0.0783
+            },
+            {
+              "head": "L24H2",
+              "direction": "memory",
+              "eap_score": -0.3769,
+              "eap_rank": 669,
+              "pp_score": -0.0535
+            },
+            {
+              "head": "L15H20",
+              "direction": "memory",
+              "eap_score": -0.3026,
+              "eap_rank": 668,
+              "pp_score": -0.0362
+            },
+            {
+              "head": "L23H10",
+              "direction": "memory",
+              "eap_score": -0.2812,
+              "eap_rank": 667,
+              "pp_score": -0.0766
+            },
+            {
+              "head": "L17H17",
+              "direction": "memory",
+              "eap_score": -0.2764,
+              "eap_rank": 666,
+              "pp_score": -0.0453
+            },
+            {
+              "head": "L26H18",
+              "direction": "memory",
+              "eap_score": -0.2694,
+              "eap_rank": 665,
+              "pp_score": -0.0191
+            },
+            {
+              "head": "L18H11",
+              "direction": "memory",
+              "eap_score": -0.2408,
+              "eap_rank": 664,
+              "pp_score": -0.067
+            },
+            {
+              "head": "L25H7",
+              "direction": "memory",
+              "eap_score": -0.236,
+              "eap_rank": 663,
+              "pp_score": -0.0178
+            }
+          ]
+        },
+        "coherent": {
+          "spearman_rho": 0.5744,
+          "p_value": 0.482821,
+          "sign_agreement": "15/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 764,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.0234375,
+            "random_pair_p95": 0.11248883546369466
+          },
+          "top_heads": [
+            {
+              "head": "L24H15",
+              "direction": "context",
+              "eap_score": 2.0279,
+              "eap_rank": 1,
+              "pp_score": 0.1163
+            },
+            {
+              "head": "L26H9",
+              "direction": "context",
+              "eap_score": 1.1079,
+              "eap_rank": 2,
+              "pp_score": 0.0629
+            },
+            {
+              "head": "L21H20",
+              "direction": "context",
+              "eap_score": 0.874,
+              "eap_rank": 3,
+              "pp_score": 0.052
+            },
+            {
+              "head": "L24H4",
+              "direction": "context",
+              "eap_score": 0.8299,
+              "eap_rank": 4,
+              "pp_score": 0.0434
+            },
+            {
+              "head": "L14H19",
+              "direction": "context",
+              "eap_score": 0.7963,
+              "eap_rank": 5,
+              "pp_score": 0.0715
+            },
+            {
+              "head": "L19H11",
+              "direction": "context",
+              "eap_score": 0.7793,
+              "eap_rank": 6,
+              "pp_score": 0.0454
+            },
+            {
+              "head": "L27H5",
+              "direction": "context",
+              "eap_score": 0.649,
+              "eap_rank": 7,
+              "pp_score": 0.0343
+            },
+            {
+              "head": "L27H0",
+              "direction": "context",
+              "eap_score": 0.6074,
+              "eap_rank": 8,
+              "pp_score": 0.0296
+            },
+            {
+              "head": "L21H2",
+              "direction": "context",
+              "eap_score": 0.5733,
+              "eap_rank": 9,
+              "pp_score": 0.0254
+            },
+            {
+              "head": "L26H19",
+              "direction": "context",
+              "eap_score": 0.5096,
+              "eap_rank": 10,
+              "pp_score": 0.0276
+            },
+            {
+              "head": "L26H18",
+              "direction": "memory",
+              "eap_score": -0.7867,
+              "eap_rank": 672,
+              "pp_score": -0.0405
+            },
+            {
+              "head": "L25H7",
+              "direction": "memory",
+              "eap_score": -0.5623,
+              "eap_rank": 671,
+              "pp_score": -0.0239
+            },
+            {
+              "head": "L18H11",
+              "direction": "memory",
+              "eap_score": -0.4297,
+              "eap_rank": 670,
+              "pp_score": -0.0499
+            },
+            {
+              "head": "L15H20",
+              "direction": "memory",
+              "eap_score": -0.4192,
+              "eap_rank": 669,
+              "pp_score": -0.0239
+            },
+            {
+              "head": "L16H16",
+              "direction": "memory",
+              "eap_score": -0.3093,
+              "eap_rank": 668,
+              "pp_score": -0.026
+            },
+            {
+              "head": "L17H2",
+              "direction": "memory",
+              "eap_score": -0.304,
+              "eap_rank": 667,
+              "pp_score": -0.0301
+            },
+            {
+              "head": "L23H10",
+              "direction": "memory",
+              "eap_score": -0.2543,
+              "eap_rank": 666,
+              "pp_score": -0.0261
+            },
+            {
+              "head": "L17H17",
+              "direction": "memory",
+              "eap_score": -0.2036,
+              "eap_rank": 665,
+              "pp_score": -0.0144
+            },
+            {
+              "head": "L27H3",
+              "direction": "memory",
+              "eap_score": -0.1973,
+              "eap_rank": 664,
+              "pp_score": -0.0096
+            },
+            {
+              "head": "L24H16",
+              "direction": "memory",
+              "eap_score": -0.1895,
+              "eap_rank": 663,
+              "pp_score": -0.0114
+            }
+          ]
+        }
+      }
+    },
+    "llama32_3b_instruct": {
+      "model_id": "meta-llama/Llama-3.2-3B-Instruct",
+      "cells": {
+        "substitution": {
+          "spearman_rho": 0.6872,
+          "p_value": 0.344152,
+          "sign_agreement": "17/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 749,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.0625,
+            "random_pair_p95": 0.7484537152345351
+          },
+          "top_heads": [
+            {
+              "head": "L24H15",
+              "direction": "context",
+              "eap_score": 1.0748,
+              "eap_rank": 1,
+              "pp_score": 0.1862
+            },
+            {
+              "head": "L26H9",
+              "direction": "context",
+              "eap_score": 0.6621,
+              "eap_rank": 2,
+              "pp_score": 0.1278
+            },
+            {
+              "head": "L21H2",
+              "direction": "context",
+              "eap_score": 0.5374,
+              "eap_rank": 3,
+              "pp_score": 0.0638
+            },
+            {
+              "head": "L27H5",
+              "direction": "context",
+              "eap_score": 0.3824,
+              "eap_rank": 4,
+              "pp_score": 0.0721
+            },
+            {
+              "head": "L14H22",
+              "direction": "context",
+              "eap_score": 0.3765,
+              "eap_rank": 5,
+              "pp_score": 0.0775
+            },
+            {
+              "head": "L27H15",
+              "direction": "context",
+              "eap_score": 0.3294,
+              "eap_rank": 6,
+              "pp_score": 0.0521
+            },
+            {
+              "head": "L27H10",
+              "direction": "context",
+              "eap_score": 0.3111,
+              "eap_rank": 7,
+              "pp_score": 0.056
+            },
+            {
+              "head": "L19H11",
+              "direction": "context",
+              "eap_score": 0.3081,
+              "eap_rank": 8,
+              "pp_score": 0.0538
+            },
+            {
+              "head": "L21H20",
+              "direction": "context",
+              "eap_score": 0.2901,
+              "eap_rank": 9,
+              "pp_score": 0.0439
+            },
+            {
+              "head": "L14H2",
+              "direction": "context",
+              "eap_score": 0.2852,
+              "eap_rank": 10,
+              "pp_score": 0.0768
+            },
+            {
+              "head": "L24H16",
+              "direction": "memory",
+              "eap_score": -0.7428,
+              "eap_rank": 672,
+              "pp_score": -0.1197
+            },
+            {
+              "head": "L14H18",
+              "direction": "memory",
+              "eap_score": -0.6404,
+              "eap_rank": 671,
+              "pp_score": -0.1494
+            },
+            {
+              "head": "L24H1",
+              "direction": "memory",
+              "eap_score": -0.5701,
+              "eap_rank": 670,
+              "pp_score": -0.0955
+            },
+            {
+              "head": "L24H2",
+              "direction": "memory",
+              "eap_score": -0.4792,
+              "eap_rank": 669,
+              "pp_score": -0.0823
+            },
+            {
+              "head": "L13H3",
+              "direction": "memory",
+              "eap_score": -0.2707,
+              "eap_rank": 668,
+              "pp_score": -0.1681
+            },
+            {
+              "head": "L15H20",
+              "direction": "memory",
+              "eap_score": -0.2572,
+              "eap_rank": 667,
+              "pp_score": -0.0635
+            },
+            {
+              "head": "L17H17",
+              "direction": "memory",
+              "eap_score": -0.2229,
+              "eap_rank": 666,
+              "pp_score": -0.0605
+            },
+            {
+              "head": "L18H11",
+              "direction": "memory",
+              "eap_score": -0.2207,
+              "eap_rank": 665,
+              "pp_score": -0.1183
+            },
+            {
+              "head": "L27H17",
+              "direction": "memory",
+              "eap_score": -0.2051,
+              "eap_rank": 664,
+              "pp_score": -0.0266
+            },
+            {
+              "head": "L23H10",
+              "direction": "memory",
+              "eap_score": -0.1988,
+              "eap_rank": 663,
+              "pp_score": -0.0808
+            }
+          ]
+        },
+        "coherent": {
+          "spearman_rho": 0.6571,
+          "p_value": 0.383311,
+          "sign_agreement": "17/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 764,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.078125,
+            "random_pair_p95": 0.12129805014040107
+          },
+          "top_heads": [
+            {
+              "head": "L24H15",
+              "direction": "context",
+              "eap_score": 2.1054,
+              "eap_rank": 1,
+              "pp_score": 0.126
+            },
+            {
+              "head": "L26H9",
+              "direction": "context",
+              "eap_score": 1.0191,
+              "eap_rank": 2,
+              "pp_score": 0.0616
+            },
+            {
+              "head": "L21H20",
+              "direction": "context",
+              "eap_score": 0.9668,
+              "eap_rank": 3,
+              "pp_score": 0.0595
+            },
+            {
+              "head": "L24H4",
+              "direction": "context",
+              "eap_score": 0.707,
+              "eap_rank": 4,
+              "pp_score": 0.042
+            },
+            {
+              "head": "L21H2",
+              "direction": "context",
+              "eap_score": 0.6727,
+              "eap_rank": 5,
+              "pp_score": 0.0295
+            },
+            {
+              "head": "L15H18",
+              "direction": "context",
+              "eap_score": 0.6159,
+              "eap_rank": 6,
+              "pp_score": 0.0583
+            },
+            {
+              "head": "L27H5",
+              "direction": "context",
+              "eap_score": 0.6129,
+              "eap_rank": 7,
+              "pp_score": 0.034
+            },
+            {
+              "head": "L14H19",
+              "direction": "context",
+              "eap_score": 0.5901,
+              "eap_rank": 8,
+              "pp_score": 0.0673
+            },
+            {
+              "head": "L19H11",
+              "direction": "context",
+              "eap_score": 0.581,
+              "eap_rank": 9,
+              "pp_score": 0.0398
+            },
+            {
+              "head": "L24H17",
+              "direction": "context",
+              "eap_score": 0.4701,
+              "eap_rank": 10,
+              "pp_score": 0.0237
+            },
+            {
+              "head": "L26H18",
+              "direction": "memory",
+              "eap_score": -0.6165,
+              "eap_rank": 672,
+              "pp_score": -0.0325
+            },
+            {
+              "head": "L15H20",
+              "direction": "memory",
+              "eap_score": -0.6111,
+              "eap_rank": 671,
+              "pp_score": -0.0401
+            },
+            {
+              "head": "L25H7",
+              "direction": "memory",
+              "eap_score": -0.503,
+              "eap_rank": 670,
+              "pp_score": -0.0232
+            },
+            {
+              "head": "L18H11",
+              "direction": "memory",
+              "eap_score": -0.3271,
+              "eap_rank": 669,
+              "pp_score": -0.0552
+            },
+            {
+              "head": "L23H10",
+              "direction": "memory",
+              "eap_score": -0.2411,
+              "eap_rank": 668,
+              "pp_score": -0.026
+            },
+            {
+              "head": "L16H16",
+              "direction": "memory",
+              "eap_score": -0.2408,
+              "eap_rank": 667,
+              "pp_score": -0.0197
+            },
+            {
+              "head": "L24H16",
+              "direction": "memory",
+              "eap_score": -0.1945,
+              "eap_rank": 666,
+              "pp_score": -0.0112
+            },
+            {
+              "head": "L17H10",
+              "direction": "memory",
+              "eap_score": -0.1944,
+              "eap_rank": 665,
+              "pp_score": -0.0172
+            },
+            {
+              "head": "L17H2",
+              "direction": "memory",
+              "eap_score": -0.1931,
+              "eap_rank": 664,
+              "pp_score": -0.023
+            },
+            {
+              "head": "L27H3",
+              "direction": "memory",
+              "eap_score": -0.179,
+              "eap_rank": 663,
+              "pp_score": -0.009
+            }
+          ]
+        }
+      }
+    }
+  },
+  "_provenance": {
+    "contrast": "inplace_swap",
+    "dataset": "single_token_st",
+    "n_used": 3041,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "all",
+    "model_tag": "all_variants"
+  }
+}

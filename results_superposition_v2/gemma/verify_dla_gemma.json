@@ -1,0 +1,152 @@
+{
+  "family": "gemma",
+  "final_logit_softcap": null,
+  "median_abs_err": 0.0,
+  "verdict": "SCALING OK \u2014 DLA reconstructs the model logits; small Gemma pulls are REAL",
+  "samples": [
+    {
+      "who": "ctx",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 19.375,
+      "recon_capped": 19.375,
+      "actual": 19.375,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "mem",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 15.9375,
+      "recon_capped": 15.9375,
+      "actual": 15.9375,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 20.0,
+      "recon_capped": 20.0,
+      "actual": 19.875,
+      "abs_err_vs_actual": 0.125
+    },
+    {
+      "who": "mem",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 17.625,
+      "recon_capped": 17.625,
+      "actual": 17.625,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 20.125,
+      "recon_capped": 20.125,
+      "actual": 20.125,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "mem",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 17.375,
+      "recon_capped": 17.375,
+      "actual": 17.375,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 2024.0,
+      "ln_scale": 0.000496,
+      "recon_raw": 18.625,
+      "recon_capped": 18.625,
+      "actual": 18.5,
+      "abs_err_vs_actual": 0.125
+    },
+    {
+      "who": "mem",
+      "resid_rms": 2024.0,
+      "ln_scale": 0.000496,
+      "recon_raw": 18.125,
+      "recon_capped": 18.125,
+      "actual": 18.0,
+      "abs_err_vs_actual": 0.125
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 1912.0,
+      "ln_scale": 0.000523,
+      "recon_raw": 18.875,
+      "recon_capped": 18.875,
+      "actual": 18.875,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "mem",
+      "resid_rms": 1912.0,
+      "ln_scale": 0.000523,
+      "recon_raw": 19.5,
+      "recon_capped": 19.5,
+      "actual": 19.5,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 2224.0,
+      "ln_scale": 0.00045,
+      "recon_raw": 18.125,
+      "recon_capped": 18.125,
+      "actual": 18.125,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "mem",
+      "resid_rms": 2224.0,
+      "ln_scale": 0.00045,
+      "recon_raw": 17.125,
+      "recon_capped": 17.125,
+      "actual": 17.0,
+      "abs_err_vs_actual": 0.125
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 1992.0,
+      "ln_scale": 0.000504,
+      "recon_raw": 19.75,
+      "recon_capped": 19.75,
+      "actual": 19.75,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "mem",
+      "resid_rms": 1992.0,
+      "ln_scale": 0.000504,
+      "recon_raw": 18.25,
+      "recon_capped": 18.25,
+      "actual": 18.125,
+      "abs_err_vs_actual": 0.125
+    },
+    {
+      "who": "ctx",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 19.25,
+      "recon_capped": 19.25,
+      "actual": 19.25,
+      "abs_err_vs_actual": 0.0
+    },
+    {
+      "who": "mem",
+      "resid_rms": 2032.0,
+      "ln_scale": 0.000492,
+      "recon_raw": 13.75,
+      "recon_capped": 13.75,
+      "actual": 13.6875,
+      "abs_err_vs_actual": 0.0625
+    }
+  ]
+}

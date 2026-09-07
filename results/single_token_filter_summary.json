@@ -1,0 +1,23 @@
+{
+  "n_variants_found": 6,
+  "n_variants_expected": 6,
+  "families": {
+    "llama32_3b": {
+      "base_n_survived": 764,
+      "instruct_n_survived": 764,
+      "base_instruct_identical_set": true
+    },
+    "gemma3_4b": {
+      "base_n_survived": 870,
+      "instruct_n_survived": 870,
+      "base_instruct_identical_set": true
+    },
+    "qwen25_3b": {
+      "base_n_survived": 764,
+      "instruct_n_survived": 764,
+      "base_instruct_identical_set": true
+    }
+  },
+  "cross_family_intersection_size": 764,
+  "note": "DIAGNOSTIC / OPTIONAL SECONDARY ROBUSTNESS CHECK ONLY -- NOT the primary backbone. Each family's own maximal single-token set is the primary backbone for the within-family base-vs-instruct comparison; intersecting across all 3 tokenizers loses power and skews further toward famous-entity rows. Team decision, 2026-07-08."
+}

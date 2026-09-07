@@ -1,0 +1,83 @@
+{
+  "family": "llama",
+  "variant": "instruct",
+  "topk": 5,
+  "baseline_crr": 0.25785340314136124,
+  "known_baseline_crr": 0.2631,
+  "ctx_heads": [
+    "L24H15",
+    "L26H9",
+    "L21H2",
+    "L27H5",
+    "L14H22"
+  ],
+  "mem_heads": [
+    "L24H16",
+    "L14H18",
+    "L24H1",
+    "L24H2",
+    "L13H3"
+  ],
+  "conditions": {
+    "amplify_context": {
+      "ablation_mode": "amplify",
+      "crr": 0.344241,
+      "delta_crr": 0.086387,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR>0",
+      "n_context": 263,
+      "n_memory": 397,
+      "n_neither": 104
+    },
+    "suppress_context": {
+      "ablation_mode": "mean",
+      "crr": 0.164921,
+      "delta_crr": -0.092932,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR<0",
+      "n_context": 126,
+      "n_memory": 468,
+      "n_neither": 170
+    },
+    "suppress_context_zero": {
+      "ablation_mode": "zero",
+      "crr": 0.16623,
+      "delta_crr": -0.091623,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR<0 (harsher)",
+      "n_context": 127,
+      "n_memory": 448,
+      "n_neither": 189
+    },
+    "amplify_memory": {
+      "ablation_mode": "amplify",
+      "crr": 0.187173,
+      "delta_crr": -0.070681,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR<0",
+      "n_context": 143,
+      "n_memory": 454,
+      "n_neither": 167
+    },
+    "suppress_memory": {
+      "ablation_mode": "mean",
+      "crr": 0.299738,
+      "delta_crr": 0.041885,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR>0  [Merge B: validates LDS]",
+      "n_context": 229,
+      "n_memory": 404,
+      "n_neither": 131
+    },
+    "suppress_memory_zero": {
+      "ablation_mode": "zero",
+      "crr": 0.430628,
+      "delta_crr": 0.172775,
+      "matched_expectation": true,
+      "expectation": "expect \u0394CRR>0 (harsher)",
+      "n_context": 329,
+      "n_memory": 355,
+      "n_neither": 80
+    }
+  }
+}

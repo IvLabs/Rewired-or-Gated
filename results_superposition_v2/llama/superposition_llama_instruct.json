@@ -1,0 +1,266 @@
+{
+  "n_prompts": 764,
+  "thresholds": {
+    "context": 0.33,
+    "memory": -0.33
+  },
+  "metric": "context_index=(ctx_pull-mem_pull)/(|ctx_pull|+|mem_pull|)",
+  "heads": {
+    "L24H15": {
+      "layer": 24,
+      "head": 15,
+      "ctx_pull": 0.934905,
+      "mem_pull": 0.25438,
+      "pull_magnitude": 1.189285,
+      "context_index": 0.572213,
+      "role": "context",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 3.6752
+    },
+    "L14H22": {
+      "layer": 14,
+      "head": 22,
+      "ctx_pull": 0.113312,
+      "mem_pull": 0.041588,
+      "pull_magnitude": 0.1549,
+      "context_index": 0.46303,
+      "role": "context",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 2.7246
+    },
+    "L26H9": {
+      "layer": 26,
+      "head": 9,
+      "ctx_pull": 0.677041,
+      "mem_pull": 0.277528,
+      "pull_magnitude": 0.95457,
+      "context_index": 0.418527,
+      "role": "context",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 2.4395
+    },
+    "L21H20": {
+      "layer": 21,
+      "head": 20,
+      "ctx_pull": 0.048555,
+      "mem_pull": -0.013434,
+      "pull_magnitude": 0.061988,
+      "context_index": 1.0,
+      "role": "context",
+      "sign_pattern": "ctx_pos_mem_neg",
+      "legacy_ratio": null
+    },
+    "L21H2": {
+      "layer": 21,
+      "head": 2,
+      "ctx_pull": 0.295823,
+      "mem_pull": 0.439152,
+      "pull_magnitude": 0.734975,
+      "context_index": -0.195012,
+      "role": "superposition",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 0.6736
+    },
+    "L14H2": {
+      "layer": 14,
+      "head": 2,
+      "ctx_pull": 0.088218,
+      "mem_pull": 0.031112,
+      "pull_magnitude": 0.11933,
+      "context_index": 0.478554,
+      "role": "context",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 2.8355
+    },
+    "L27H5": {
+      "layer": 27,
+      "head": 5,
+      "ctx_pull": 0.67724,
+      "mem_pull": 0.946042,
+      "pull_magnitude": 1.623282,
+      "context_index": -0.165592,
+      "role": "superposition",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 0.7159
+    },
+    "L24H4": {
+      "layer": 24,
+      "head": 4,
+      "ctx_pull": 0.259531,
+      "mem_pull": 0.090078,
+      "pull_magnitude": 0.349609,
+      "context_index": 0.484692,
+      "role": "context",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 2.8812
+    },
+    "L19H11": {
+      "layer": 19,
+      "head": 11,
+      "ctx_pull": 0.465515,
+      "mem_pull": 0.553887,
+      "pull_magnitude": 1.019402,
+      "context_index": -0.08669,
+      "role": "superposition",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 0.8405
+    },
+    "L27H15": {
+      "layer": 27,
+      "head": 15,
+      "ctx_pull": 0.233809,
+      "mem_pull": 0.042747,
+      "pull_magnitude": 0.276556,
+      "context_index": 0.690861,
+      "role": "context",
+      "sign_pattern": "both_pos",
+      "legacy_ratio": 5.4696
+    },
+    "L24H16": {
+      "layer": 24,
+      "head": 16,
+      "ctx_pull": -0.490925,
+      "mem_pull": -0.115643,
+      "pull_magnitude": 0.606568,
+      "context_index": -0.618698,
+      "role": "memory",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L24H1": {
+      "layer": 24,
+      "head": 1,
+      "ctx_pull": -0.31341,
+      "mem_pull": -0.135473,
+      "pull_magnitude": 0.448883,
+      "context_index": -0.396399,
+      "role": "memory",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L14H18": {
+      "layer": 14,
+      "head": 18,
+      "ctx_pull": -0.277403,
+      "mem_pull": -0.236848,
+      "pull_magnitude": 0.514251,
+      "context_index": -0.078861,
+      "role": "superposition",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L24H2": {
+      "layer": 24,
+      "head": 2,
+      "ctx_pull": -0.401419,
+      "mem_pull": -0.231254,
+      "pull_magnitude": 0.632673,
+      "context_index": -0.268963,
+      "role": "superposition",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L15H20": {
+      "layer": 15,
+      "head": 20,
+      "ctx_pull": -0.080291,
+      "mem_pull": -0.030985,
+      "pull_magnitude": 0.111276,
+      "context_index": -0.443102,
+      "role": "memory",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L23H10": {
+      "layer": 23,
+      "head": 10,
+      "ctx_pull": -0.043066,
+      "mem_pull": -0.031894,
+      "pull_magnitude": 0.07496,
+      "context_index": -0.149051,
+      "role": "superposition",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L17H17": {
+      "layer": 17,
+      "head": 17,
+      "ctx_pull": -0.125919,
+      "mem_pull": -0.061318,
+      "pull_magnitude": 0.187237,
+      "context_index": -0.345019,
+      "role": "memory",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L26H18": {
+      "layer": 26,
+      "head": 18,
+      "ctx_pull": -0.086294,
+      "mem_pull": -0.150944,
+      "pull_magnitude": 0.237238,
+      "context_index": 0.272515,
+      "role": "superposition",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L18H11": {
+      "layer": 18,
+      "head": 11,
+      "ctx_pull": -0.1381,
+      "mem_pull": -0.06992,
+      "pull_magnitude": 0.208021,
+      "context_index": -0.327756,
+      "role": "superposition",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L25H7": {
+      "layer": 25,
+      "head": 7,
+      "ctx_pull": -0.171264,
+      "mem_pull": -0.16239,
+      "pull_magnitude": 0.333653,
+      "context_index": -0.026597,
+      "role": "superposition",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    },
+    "L27H10": {
+      "layer": 27,
+      "head": 10,
+      "ctx_pull": 0.09383,
+      "mem_pull": -0.055234,
+      "pull_magnitude": 0.149064,
+      "context_index": 1.0,
+      "role": "context",
+      "sign_pattern": "ctx_pos_mem_neg",
+      "legacy_ratio": null
+    },
+    "L13H3": {
+      "layer": 13,
+      "head": 3,
+      "ctx_pull": -0.005945,
+      "mem_pull": 0.035411,
+      "pull_magnitude": 0.041356,
+      "context_index": -1.0,
+      "role": "memory",
+      "sign_pattern": "ctx_neg_mem_pos",
+      "legacy_ratio": null
+    },
+    "L27H17": {
+      "layer": 27,
+      "head": 17,
+      "ctx_pull": -0.120053,
+      "mem_pull": -0.026415,
+      "pull_magnitude": 0.146468,
+      "context_index": -0.639304,
+      "role": "memory",
+      "sign_pattern": "both_neg",
+      "legacy_ratio": null
+    }
+  },
+  "family": "llama",
+  "variant": "instruct",
+  "model": "meta-llama/Llama-3.2-3B-Instruct"
+}

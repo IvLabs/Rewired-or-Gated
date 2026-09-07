@@ -1,0 +1,641 @@
+{
+  "experiment": "Qwen-2.5-3B EAP-screen -> PP-verify",
+  "method": "multi-token mean log-prob",
+  "models": {
+    "qwen25_3b_base": {
+      "model_id": "Qwen/Qwen2.5-3B",
+      "cells": {
+        "substitution": {
+          "spearman_rho": 0.8391,
+          "p_value": 0.122949,
+          "sign_agreement": "17/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 745,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.09375,
+            "random_pair_p95": 0.27777102130167275
+          },
+          "top_heads": [
+            {
+              "head": "L33H15",
+              "direction": "context",
+              "eap_score": 1.3272,
+              "eap_rank": 1,
+              "pp_score": 0.2482
+            },
+            {
+              "head": "L32H7",
+              "direction": "context",
+              "eap_score": 1.2974,
+              "eap_rank": 2,
+              "pp_score": 0.2285
+            },
+            {
+              "head": "L32H3",
+              "direction": "context",
+              "eap_score": 0.9538,
+              "eap_rank": 3,
+              "pp_score": 0.0957
+            },
+            {
+              "head": "L31H5",
+              "direction": "context",
+              "eap_score": 0.6013,
+              "eap_rank": 4,
+              "pp_score": 0.1077
+            },
+            {
+              "head": "L33H3",
+              "direction": "context",
+              "eap_score": 0.4938,
+              "eap_rank": 5,
+              "pp_score": 0.055
+            },
+            {
+              "head": "L32H13",
+              "direction": "context",
+              "eap_score": 0.4749,
+              "eap_rank": 6,
+              "pp_score": 0.0418
+            },
+            {
+              "head": "L33H1",
+              "direction": "context",
+              "eap_score": 0.4717,
+              "eap_rank": 7,
+              "pp_score": 0.0697
+            },
+            {
+              "head": "L27H10",
+              "direction": "context",
+              "eap_score": 0.2995,
+              "eap_rank": 8,
+              "pp_score": 0.0558
+            },
+            {
+              "head": "L31H1",
+              "direction": "context",
+              "eap_score": 0.2786,
+              "eap_rank": 9,
+              "pp_score": 0.039
+            },
+            {
+              "head": "L27H9",
+              "direction": "context",
+              "eap_score": 0.2429,
+              "eap_rank": 10,
+              "pp_score": 0.0551
+            },
+            {
+              "head": "L31H2",
+              "direction": "memory",
+              "eap_score": -1.3386,
+              "eap_rank": 576,
+              "pp_score": -0.2605
+            },
+            {
+              "head": "L33H13",
+              "direction": "memory",
+              "eap_score": -1.1886,
+              "eap_rank": 575,
+              "pp_score": -0.2425
+            },
+            {
+              "head": "L34H10",
+              "direction": "memory",
+              "eap_score": -0.4491,
+              "eap_rank": 574,
+              "pp_score": -0.0726
+            },
+            {
+              "head": "L32H5",
+              "direction": "memory",
+              "eap_score": -0.202,
+              "eap_rank": 573,
+              "pp_score": -0.0383
+            },
+            {
+              "head": "L26H7",
+              "direction": "memory",
+              "eap_score": -0.1502,
+              "eap_rank": 572,
+              "pp_score": -0.0875
+            },
+            {
+              "head": "L28H15",
+              "direction": "memory",
+              "eap_score": -0.147,
+              "eap_rank": 571,
+              "pp_score": -0.0335
+            },
+            {
+              "head": "L20H5",
+              "direction": "memory",
+              "eap_score": -0.1425,
+              "eap_rank": 570,
+              "pp_score": -0.0082
+            },
+            {
+              "head": "L32H11",
+              "direction": "memory",
+              "eap_score": -0.0991,
+              "eap_rank": 569,
+              "pp_score": -0.0175
+            },
+            {
+              "head": "L33H9",
+              "direction": "memory",
+              "eap_score": -0.0777,
+              "eap_rank": 568,
+              "pp_score": -0.0115
+            },
+            {
+              "head": "L34H8",
+              "direction": "memory",
+              "eap_score": -0.0761,
+              "eap_rank": 567,
+              "pp_score": -0.0082
+            }
+          ]
+        },
+        "coherent": {
+          "spearman_rho": 0.8316,
+          "p_value": 0.13433,
+          "sign_agreement": "18/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 764,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.06640625,
+            "random_pair_p95": 0.10377799449070997
+          },
+          "top_heads": [
+            {
+              "head": "L33H15",
+              "direction": "context",
+              "eap_score": 3.6963,
+              "eap_rank": 1,
+              "pp_score": 0.1989
+            },
+            {
+              "head": "L32H3",
+              "direction": "context",
+              "eap_score": 2.2588,
+              "eap_rank": 2,
+              "pp_score": 0.0839
+            },
+            {
+              "head": "L32H7",
+              "direction": "context",
+              "eap_score": 2.1973,
+              "eap_rank": 3,
+              "pp_score": 0.134
+            },
+            {
+              "head": "L31H7",
+              "direction": "context",
+              "eap_score": 1.5663,
+              "eap_rank": 4,
+              "pp_score": 0.0881
+            },
+            {
+              "head": "L34H14",
+              "direction": "context",
+              "eap_score": 0.9858,
+              "eap_rank": 5,
+              "pp_score": 0.0535
+            },
+            {
+              "head": "L33H3",
+              "direction": "context",
+              "eap_score": 0.9789,
+              "eap_rank": 6,
+              "pp_score": 0.0381
+            },
+            {
+              "head": "L31H3",
+              "direction": "context",
+              "eap_score": 0.9495,
+              "eap_rank": 7,
+              "pp_score": 0.0593
+            },
+            {
+              "head": "L33H1",
+              "direction": "context",
+              "eap_score": 0.8626,
+              "eap_rank": 8,
+              "pp_score": 0.0395
+            },
+            {
+              "head": "L32H10",
+              "direction": "context",
+              "eap_score": 0.6991,
+              "eap_rank": 9,
+              "pp_score": 0.0305
+            },
+            {
+              "head": "L32H13",
+              "direction": "context",
+              "eap_score": 0.6886,
+              "eap_rank": 10,
+              "pp_score": 0.0257
+            },
+            {
+              "head": "L34H10",
+              "direction": "memory",
+              "eap_score": -1.7283,
+              "eap_rank": 576,
+              "pp_score": -0.0868
+            },
+            {
+              "head": "L31H2",
+              "direction": "memory",
+              "eap_score": -1.1579,
+              "eap_rank": 575,
+              "pp_score": -0.0551
+            },
+            {
+              "head": "L33H13",
+              "direction": "memory",
+              "eap_score": -0.2995,
+              "eap_rank": 574,
+              "pp_score": -0.0159
+            },
+            {
+              "head": "L34H8",
+              "direction": "memory",
+              "eap_score": -0.2634,
+              "eap_rank": 573,
+              "pp_score": -0.0114
+            },
+            {
+              "head": "L34H11",
+              "direction": "memory",
+              "eap_score": -0.1228,
+              "eap_rank": 572,
+              "pp_score": -0.0063
+            },
+            {
+              "head": "L33H9",
+              "direction": "memory",
+              "eap_score": -0.1125,
+              "eap_rank": 571,
+              "pp_score": -0.0048
+            },
+            {
+              "head": "L26H7",
+              "direction": "memory",
+              "eap_score": -0.1051,
+              "eap_rank": 570,
+              "pp_score": -0.025
+            },
+            {
+              "head": "L28H15",
+              "direction": "memory",
+              "eap_score": -0.1028,
+              "eap_rank": 569,
+              "pp_score": -0.0053
+            },
+            {
+              "head": "L30H7",
+              "direction": "memory",
+              "eap_score": -0.0879,
+              "eap_rank": 568,
+              "pp_score": -0.0044
+            },
+            {
+              "head": "L20H5",
+              "direction": "memory",
+              "eap_score": -0.0844,
+              "eap_rank": 567,
+              "pp_score": -0.0036
+            }
+          ]
+        }
+      }
+    },
+    "qwen25_3b_instruct": {
+      "model_id": "Qwen/Qwen2.5-3B-Instruct",
+      "cells": {
+        "substitution": {
+          "spearman_rho": 0.8541,
+          "p_value": 0.100506,
+          "sign_agreement": "16/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 480,
+          "noise_floor": {
+            "identity_patch_max_abs": 0.375,
+            "random_pair_p95": 0.4579120879120879
+          },
+          "top_heads": [
+            {
+              "head": "L33H15",
+              "direction": "context",
+              "eap_score": 1.3632,
+              "eap_rank": 1,
+              "pp_score": 0.3073
+            },
+            {
+              "head": "L32H7",
+              "direction": "context",
+              "eap_score": 1.076,
+              "eap_rank": 2,
+              "pp_score": 0.2666
+            },
+            {
+              "head": "L32H3",
+              "direction": "context",
+              "eap_score": 0.8986,
+              "eap_rank": 3,
+              "pp_score": 0.1023
+            },
+            {
+              "head": "L31H5",
+              "direction": "context",
+              "eap_score": 0.8896,
+              "eap_rank": 4,
+              "pp_score": 0.165
+            },
+            {
+              "head": "L33H3",
+              "direction": "context",
+              "eap_score": 0.5349,
+              "eap_rank": 5,
+              "pp_score": 0.108
+            },
+            {
+              "head": "L33H1",
+              "direction": "context",
+              "eap_score": 0.4892,
+              "eap_rank": 6,
+              "pp_score": 0.1031
+            },
+            {
+              "head": "L32H13",
+              "direction": "context",
+              "eap_score": 0.4666,
+              "eap_rank": 7,
+              "pp_score": 0.0774
+            },
+            {
+              "head": "L31H7",
+              "direction": "context",
+              "eap_score": 0.3587,
+              "eap_rank": 8,
+              "pp_score": 0.0659
+            },
+            {
+              "head": "L31H1",
+              "direction": "context",
+              "eap_score": 0.3536,
+              "eap_rank": 9,
+              "pp_score": 0.0745
+            },
+            {
+              "head": "L31H3",
+              "direction": "context",
+              "eap_score": 0.3413,
+              "eap_rank": 10,
+              "pp_score": 0.0805
+            },
+            {
+              "head": "L33H13",
+              "direction": "memory",
+              "eap_score": -2.3199,
+              "eap_rank": 576,
+              "pp_score": -0.4202
+            },
+            {
+              "head": "L31H2",
+              "direction": "memory",
+              "eap_score": -1.9007,
+              "eap_rank": 575,
+              "pp_score": -0.4144
+            },
+            {
+              "head": "L32H5",
+              "direction": "memory",
+              "eap_score": -0.4971,
+              "eap_rank": 574,
+              "pp_score": -0.0925
+            },
+            {
+              "head": "L26H7",
+              "direction": "memory",
+              "eap_score": -0.4443,
+              "eap_rank": 573,
+              "pp_score": -0.2143
+            },
+            {
+              "head": "L28H15",
+              "direction": "memory",
+              "eap_score": -0.271,
+              "eap_rank": 572,
+              "pp_score": -0.0758
+            },
+            {
+              "head": "L20H5",
+              "direction": "memory",
+              "eap_score": -0.2507,
+              "eap_rank": 571,
+              "pp_score": -0.0392
+            },
+            {
+              "head": "L34H10",
+              "direction": "memory",
+              "eap_score": -0.1883,
+              "eap_rank": 570,
+              "pp_score": -0.0611
+            },
+            {
+              "head": "L24H7",
+              "direction": "memory",
+              "eap_score": -0.1871,
+              "eap_rank": 569,
+              "pp_score": -0.0482
+            },
+            {
+              "head": "L21H0",
+              "direction": "memory",
+              "eap_score": -0.1806,
+              "eap_rank": 568,
+              "pp_score": -0.3046
+            },
+            {
+              "head": "L26H4",
+              "direction": "memory",
+              "eap_score": -0.1775,
+              "eap_rank": 567,
+              "pp_score": 0.081
+            }
+          ]
+        },
+        "coherent": {
+          "spearman_rho": 0.9248,
+          "p_value": 0.015057,
+          "sign_agreement": "19/20",
+          "gate_pass": true,
+          "n_prompts_input": 764,
+          "n_prompts_used": 728,
+          "noise_floor": {
+            "identity_patch_max_abs": 1.03125,
+            "random_pair_p95": 0.21532415700277338
+          },
+          "top_heads": [
+            {
+              "head": "L33H15",
+              "direction": "context",
+              "eap_score": 4.6904,
+              "eap_rank": 1,
+              "pp_score": 0.1779
+            },
+            {
+              "head": "L32H7",
+              "direction": "context",
+              "eap_score": 3.7762,
+              "eap_rank": 2,
+              "pp_score": 0.1574
+            },
+            {
+              "head": "L32H3",
+              "direction": "context",
+              "eap_score": 3.4822,
+              "eap_rank": 3,
+              "pp_score": 0.0937
+            },
+            {
+              "head": "L31H7",
+              "direction": "context",
+              "eap_score": 3.0248,
+              "eap_rank": 4,
+              "pp_score": 0.1168
+            },
+            {
+              "head": "L31H3",
+              "direction": "context",
+              "eap_score": 1.9939,
+              "eap_rank": 5,
+              "pp_score": 0.0852
+            },
+            {
+              "head": "L34H14",
+              "direction": "context",
+              "eap_score": 1.6465,
+              "eap_rank": 6,
+              "pp_score": 0.0622
+            },
+            {
+              "head": "L33H3",
+              "direction": "context",
+              "eap_score": 1.3747,
+              "eap_rank": 7,
+              "pp_score": 0.0398
+            },
+            {
+              "head": "L33H1",
+              "direction": "context",
+              "eap_score": 1.2516,
+              "eap_rank": 8,
+              "pp_score": 0.0417
+            },
+            {
+              "head": "L27H10",
+              "direction": "context",
+              "eap_score": 1.0548,
+              "eap_rank": 9,
+              "pp_score": 0.0336
+            },
+            {
+              "head": "L34H12",
+              "direction": "context",
+              "eap_score": 1.0204,
+              "eap_rank": 10,
+              "pp_score": 0.0382
+            },
+            {
+              "head": "L31H2",
+              "direction": "memory",
+              "eap_score": -2.289,
+              "eap_rank": 576,
+              "pp_score": -0.0798
+            },
+            {
+              "head": "L34H10",
+              "direction": "memory",
+              "eap_score": -2.2481,
+              "eap_rank": 575,
+              "pp_score": -0.0777
+            },
+            {
+              "head": "L33H13",
+              "direction": "memory",
+              "eap_score": -0.605,
+              "eap_rank": 574,
+              "pp_score": -0.0226
+            },
+            {
+              "head": "L34H8",
+              "direction": "memory",
+              "eap_score": -0.4761,
+              "eap_rank": 573,
+              "pp_score": -0.0141
+            },
+            {
+              "head": "L26H7",
+              "direction": "memory",
+              "eap_score": -0.3099,
+              "eap_rank": 572,
+              "pp_score": -0.0889
+            },
+            {
+              "head": "L24H4",
+              "direction": "memory",
+              "eap_score": -0.2841,
+              "eap_rank": 571,
+              "pp_score": -0.0344
+            },
+            {
+              "head": "L21H14",
+              "direction": "memory",
+              "eap_score": -0.2649,
+              "eap_rank": 570,
+              "pp_score": -0.0106
+            },
+            {
+              "head": "L28H15",
+              "direction": "memory",
+              "eap_score": -0.2518,
+              "eap_rank": 569,
+              "pp_score": -0.0085
+            },
+            {
+              "head": "L34H11",
+              "direction": "memory",
+              "eap_score": -0.2492,
+              "eap_rank": 568,
+              "pp_score": -0.0088
+            },
+            {
+              "head": "L22H15",
+              "direction": "memory",
+              "eap_score": -0.1948,
+              "eap_rank": 567,
+              "pp_score": -0.0074
+            }
+          ]
+        }
+      }
+    }
+  },
+  "_provenance": {
+    "contrast": "inplace_swap",
+    "dataset": "single_token_st",
+    "n_used": 2717,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "all",
+    "model_tag": "all_variants"
+  }
+}

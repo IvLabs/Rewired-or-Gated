@@ -1,0 +1,21 @@
+{
+  "_provenance": {
+    "contrast": "none_single_run",
+    "dataset": "single_token_st",
+    "n_used": 870,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "substitution",
+    "model_tag": "gemma3_4b_instruct"
+  },
+  "model": "gemma3_4b_instruct",
+  "prompt_type": "substitution",
+  "crr_behavioral": {
+    "crr": 0.3689655172413793,
+    "context": 321,
+    "memory": 501,
+    "neither": 48,
+    "total": 870
+  },
+  "crr_logprob": 0.3850574712643678
+}

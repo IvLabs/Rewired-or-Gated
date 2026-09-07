@@ -1,0 +1,2 @@
+2026-07-12 03:07:59,250  INFO  ===== LLAMA  mode=superposition  device=cuda =====
+2026-07-12 03:07:59,252  INFO  [heads] union set = 23 heads; node overlap: GATING (H2): same heads matter base vs instruct

@@ -1,0 +1,234 @@
+{
+  "_provenance": {
+    "contrast": "inplace_swap",
+    "dataset": "single_token_st",
+    "n_used": 749,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "substitution",
+    "model_tag": "llama32_3b_instruct"
+  },
+  "model": "llama32_3b_instruct",
+  "prompt_type": "substitution",
+  "k": 10,
+  "source_eap_file": "/root/BBNLP/results/llama32_3b/lds2_llama32_3b_instruct_substitution_st_eap.json",
+  "selected_heads": [
+    {
+      "layer": 24,
+      "head": 15,
+      "eap_score": 1.074764870848331,
+      "eap_rank": 1,
+      "gradact_score": 0.6163990060696427,
+      "direction": "context",
+      "pp_score": 0.18619589568528283
+    },
+    {
+      "layer": 26,
+      "head": 9,
+      "eap_score": 0.6621380551323217,
+      "eap_rank": 2,
+      "gradact_score": 0.29056672151176094,
+      "direction": "context",
+      "pp_score": 0.12778720331155527
+    },
+    {
+      "layer": 21,
+      "head": 2,
+      "eap_score": 0.5374420650342372,
+      "eap_rank": 3,
+      "gradact_score": 0.019816488495671938,
+      "direction": "context",
+      "pp_score": 0.06379993786362917
+    },
+    {
+      "layer": 27,
+      "head": 5,
+      "eap_score": 0.3824160111512189,
+      "eap_rank": 4,
+      "gradact_score": -0.16028756745822767,
+      "direction": "context",
+      "pp_score": 0.07211708837239768
+    },
+    {
+      "layer": 14,
+      "head": 22,
+      "eap_score": 0.3765137357861584,
+      "eap_rank": 5,
+      "gradact_score": 0.12357872069194055,
+      "direction": "context",
+      "pp_score": 0.07746855461875948
+    },
+    {
+      "layer": 27,
+      "head": 15,
+      "eap_score": 0.3294164397953693,
+      "eap_rank": 6,
+      "gradact_score": 0.17760130497797622,
+      "direction": "context",
+      "pp_score": 0.05208123463631042
+    },
+    {
+      "layer": 27,
+      "head": 10,
+      "eap_score": 0.31106191904757036,
+      "eap_rank": 7,
+      "gradact_score": 0.13444233939285677,
+      "direction": "context",
+      "pp_score": 0.056027475390703456
+    },
+    {
+      "layer": 19,
+      "head": 11,
+      "eap_score": 0.3081176817729211,
+      "eap_rank": 8,
+      "gradact_score": -0.1388128090903397,
+      "direction": "context",
+      "pp_score": 0.05375877312683363
+    },
+    {
+      "layer": 21,
+      "head": 20,
+      "eap_score": 0.29009728157083403,
+      "eap_rank": 9,
+      "gradact_score": 0.09586262578115413,
+      "direction": "context",
+      "pp_score": 0.04393153546331008
+    },
+    {
+      "layer": 14,
+      "head": 2,
+      "eap_score": 0.2851603243363465,
+      "eap_rank": 10,
+      "gradact_score": 0.13987832793390564,
+      "direction": "context",
+      "pp_score": 0.0767743374016313
+    },
+    {
+      "layer": 24,
+      "head": 16,
+      "eap_score": -0.7427857084424084,
+      "eap_rank": 672,
+      "gradact_score": -0.3596486870531012,
+      "direction": "memory",
+      "pp_score": -0.11969641286456456
+    },
+    {
+      "layer": 14,
+      "head": 18,
+      "eap_score": -0.6403897270482248,
+      "eap_rank": 671,
+      "gradact_score": 0.08501932633484846,
+      "direction": "memory",
+      "pp_score": -0.14942513522566794
+    },
+    {
+      "layer": 24,
+      "head": 1,
+      "eap_score": -0.5700869029729154,
+      "eap_rank": 670,
+      "gradact_score": -0.16975407450611055,
+      "direction": "memory",
+      "pp_score": -0.09554357756179456
+    },
+    {
+      "layer": 24,
+      "head": 2,
+      "eap_score": -0.47924512094228056,
+      "eap_rank": 669,
+      "gradact_score": -0.18375372761831232,
+      "direction": "memory",
+      "pp_score": -0.0823452773228283
+    },
+    {
+      "layer": 13,
+      "head": 3,
+      "eap_score": -0.27072971903216775,
+      "eap_rank": 668,
+      "gradact_score": -0.2125604115231499,
+      "direction": "memory",
+      "pp_score": -0.16810658096631867
+    },
+    {
+      "layer": 15,
+      "head": 20,
+      "eap_score": -0.257221641340805,
+      "eap_rank": 667,
+      "gradact_score": -0.12646811919686682,
+      "direction": "memory",
+      "pp_score": -0.06348468844118593
+    },
+    {
+      "layer": 17,
+      "head": 17,
+      "eap_score": -0.22287003282477094,
+      "eap_rank": 666,
+      "gradact_score": -0.09944623427865393,
+      "direction": "memory",
+      "pp_score": -0.06054714759787126
+    },
+    {
+      "layer": 18,
+      "head": 11,
+      "eap_score": -0.22065485959277728,
+      "eap_rank": 665,
+      "gradact_score": -0.09506483227794707,
+      "direction": "memory",
+      "pp_score": -0.11825220644014456
+    },
+    {
+      "layer": 27,
+      "head": 17,
+      "eap_score": -0.20509138656536322,
+      "eap_rank": 664,
+      "gradact_score": -0.09421295645349313,
+      "direction": "memory",
+      "pp_score": -0.02656994074197485
+    },
+    {
+      "layer": 23,
+      "head": 10,
+      "eap_score": -0.19883222729747832,
+      "eap_rank": 663,
+      "gradact_score": -0.07696034396506105,
+      "direction": "memory",
+      "pp_score": -0.08083622040853672
+    }
+  ],
+  "head_scores": {
+    "24_15": 0.18619589568528283,
+    "26_9": 0.12778720331155527,
+    "21_2": 0.06379993786362917,
+    "27_5": 0.07211708837239768,
+    "14_22": 0.07746855461875948,
+    "27_15": 0.05208123463631042,
+    "27_10": 0.056027475390703456,
+    "19_11": 0.05375877312683363,
+    "21_20": 0.04393153546331008,
+    "14_2": 0.0767743374016313,
+    "24_16": -0.11969641286456456,
+    "14_18": -0.14942513522566794,
+    "24_1": -0.09554357756179456,
+    "24_2": -0.0823452773228283,
+    "13_3": -0.16810658096631867,
+    "15_20": -0.06348468844118593,
+    "17_17": -0.06054714759787126,
+    "18_11": -0.11825220644014456,
+    "27_17": -0.02656994074197485,
+    "23_10": -0.08083622040853672
+  },
+  "n_prompts_input": 764,
+  "n_prompts_used": 749,
+  "noise_floor": {
+    "identity_patch_max_abs": 0.0625,
+    "random_pair_p95": 0.7484537152345351
+  },
+  "meta": {
+    "n_heads_scored": 20,
+    "n_skipped_degenerate_margin": 15,
+    "n_skipped_length_mismatch": 0,
+    "n_skipped_no_swap": 0,
+    "n_skipped_error": 0,
+    "n_skipped_clean_neither": 0,
+    "torch_version": "2.13.0+cu130"
+  }
+}

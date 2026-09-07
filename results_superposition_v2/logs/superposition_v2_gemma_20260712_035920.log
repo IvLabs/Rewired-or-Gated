@@ -1,0 +1,3 @@
+2026-07-12 03:59:20,186  INFO  ===== GEMMA  mode=all  device=cuda =====
+2026-07-12 03:59:20,187  INFO  [heads] union set = 22 heads; node overlap: GATING (H2): same heads matter base vs instruct
+2026-07-12 03:59:22,064  WARNING  Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.

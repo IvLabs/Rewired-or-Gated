@@ -1,0 +1,135 @@
+Tokenizer under test: Qwen/Qwen2.5-3B (Qwen2Tokenizer)
+
+==============================================================================
+STEP 1 -- Direct mechanism test: does Qwen split words differently
+          based on leading space / sentence position?
+==============================================================================
+
+Word: 'Lionel'
+  standalone (position 0, no leading space): 'Lionel Messi plays the sport of soccer.'
+    token ids  : [43, 290, 301, 70005, 11088]
+    token strs : ['L', 'ion', 'el', ' Messi', ' plays']
+  mid-sentence (preceded by '. ', leading space): 'Someone scored a goal. Lionel Messi plays the sport of soccer.'
+    token ids  : [54511, 16548, 264, 5795, 13, 83124, 70005, 11088]
+    token strs : ['Someone', ' scored', ' a', ' goal', '.', ' Lionel', ' Messi', ' plays']
+  standalone word-span ids : [43, 290, 301] -> ['L', 'ion', 'el']
+  mid-sentence word-span ids: [54511, 16548, 264, 5795, 13, 83124] -> ['Someone', ' scored', ' a', ' goal', '.', ' Lionel']
+  SAME token-ids for the word in both positions? False
+
+Word: 'Ronaldo'
+  standalone (position 0, no leading space): 'Ronaldo Messi plays the sport of soccer.'
+    token ids  : [49, 24202, 2982, 70005, 11088]
+    token strs : ['R', 'onal', 'do', ' Messi', ' plays']
+  mid-sentence (preceded by '. ', leading space): 'Someone scored a goal. Ronaldo Messi plays the sport of soccer.'
+    token ids  : [54511, 16548, 264, 5795, 13, 64415, 70005, 11088]
+    token strs : ['Someone', ' scored', ' a', ' goal', '.', ' Ronaldo', ' Messi', ' plays']
+  standalone word-span ids : [49, 24202, 2982] -> ['R', 'onal', 'do']
+  mid-sentence word-span ids: [54511, 16548, 264, 5795, 13, 64415] -> ['Someone', ' scored', ' a', ' goal', '.', ' Ronaldo']
+  SAME token-ids for the word in both positions? False
+
+Word: 'basketball'
+  standalone (position 0, no leading space): 'basketball Messi plays the sport of soccer.'
+    token ids  : [59764, 3959, 70005, 11088, 279]
+    token strs : ['basket', 'ball', ' Messi', ' plays', ' the']
+  mid-sentence (preceded by '. ', leading space): 'Someone scored a goal. basketball Messi plays the sport of soccer.'
+    token ids  : [54511, 16548, 264, 5795, 13, 19240, 70005, 11088]
+    token strs : ['Someone', ' scored', ' a', ' goal', '.', ' basketball', ' Messi', ' plays']
+  standalone word-span ids : [59764, 3959] -> ['basket', 'ball']
+  mid-sentence word-span ids: [54511, 16548, 264, 5795, 13, 19240] -> ['Someone', ' scored', ' a', ' goal', '.', ' basketball']
+  SAME token-ids for the word in both positions? False
+
+Word: 'football'
+  standalone (position 0, no leading space): 'football Messi plays the sport of soccer.'
+    token ids  : [84336, 70005, 11088, 279, 10552]
+    token strs : ['football', ' Messi', ' plays', ' the', ' sport']
+  mid-sentence (preceded by '. ', leading space): 'Someone scored a goal. football Messi plays the sport of soccer.'
+    token ids  : [54511, 16548, 264, 5795, 13, 8964, 70005, 11088]
+    token strs : ['Someone', ' scored', ' a', ' goal', '.', ' football', ' Messi', ' plays']
+  standalone word-span ids : [84336] -> ['football']
+  mid-sentence word-span ids: [54511, 16548, 264, 5795, 13, 8964] -> ['Someone', ' scored', ' a', ' goal', '.', ' football']
+  SAME token-ids for the word in both positions? False
+
+Step 1 summary: at least one word tokenized differently depending on position/leading-space = True
+
+==============================================================================
+STEP 2 -- Reproduce the exact original alignment test with Qwen's tokenizer
+==============================================================================
+
+--- row 0 (Category='Athelete Sport') ---
+TEXT (conflict): 'Conor McGregor plays the sport of basketball. Conor McGregor plays the sport of'
+CLEAN_TEXT:      'Conor McGregor plays the sport of'
+L_main=15  L_clean=7  L_min=7
+RESULT: FAIL
+  main tokens  : ['Con', 'or', ' McGregor', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Conor', ' McGregor', ' plays', ' the', ' sport', ' of']
+  clean tokens : ['Con', 'or', ' McGregor', ' plays', ' the', ' sport', ' of']
+  main[-L_min:]  : ['.', ' Conor', ' McGregor', ' plays', ' the', ' sport', ' of']
+  clean[-L_min:] : ['Con', 'or', ' McGregor', ' plays', ' the', ' sport', ' of']
+
+--- row 1 (Category='Athelete Sport') ---
+TEXT (conflict): 'Lionel Messi plays the sport of basketball. Lionel Messi plays the sport of'
+CLEAN_TEXT:      'Lionel Messi plays the sport of'
+L_main=16  L_clean=8  L_min=8
+RESULT: FAIL
+  main tokens  : ['L', 'ion', 'el', ' Messi', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Lionel', ' Messi', ' plays', ' the', ' sport', ' of']
+  clean tokens : ['L', 'ion', 'el', ' Messi', ' plays', ' the', ' sport', ' of']
+  main[-L_min:]  : [' basketball', '.', ' Lionel', ' Messi', ' plays', ' the', ' sport', ' of']
+  clean[-L_min:] : ['L', 'ion', 'el', ' Messi', ' plays', ' the', ' sport', ' of']
+
+--- row 2 (Category='Athelete Sport') ---
+TEXT (conflict): 'Cristiano Ronaldo plays the sport of basketball. Cristiano Ronaldo plays the sport of'
+CLEAN_TEXT:      'Cristiano Ronaldo plays the sport of'
+L_main=16  L_clean=8  L_min=8
+RESULT: FAIL
+  main tokens  : ['C', 'rist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of', ' basketball', '.', ' Cristiano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+  clean tokens : ['C', 'rist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+  main[-L_min:]  : [' basketball', '.', ' Cristiano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+  clean[-L_min:] : ['C', 'rist', 'iano', ' Ronaldo', ' plays', ' the', ' sport', ' of']
+
+--- row 3 (Category='Athelete Sport') ---
+TEXT (conflict): 'Dak Prescott plays the sport of basketball. Dak Prescott plays the sport of'
+CLEAN_TEXT:      'Dak Prescott plays the sport of'
+L_main=15  L_clean=7  L_min=7
+RESULT: FAIL
+
+--- row 4 (Category='Athelete Sport') ---
+TEXT (conflict): 'LeBron James plays the sport of football. LeBron James plays the sport of'
+CLEAN_TEXT:      'LeBron James plays the sport of'
+L_main=15  L_clean=7  L_min=7
+RESULT: FAIL
+
+--- row 5 (Category='Athelete Sport') ---
+TEXT (conflict): 'Neymar plays the sport of baseball. Neymar plays the sport of'
+CLEAN_TEXT:      'Neymar plays the sport of'
+L_main=15  L_clean=7  L_min=7
+RESULT: FAIL
+
+--- row 6 (Category='Athelete Sport') ---
+TEXT (conflict): 'Roger Federer plays the sport of basketball. Roger Federer plays the sport of'
+CLEAN_TEXT:      'Roger Federer plays the sport of'
+L_main=16  L_clean=7  L_min=7
+RESULT: FAIL
+
+--- row 7 (Category='Athelete Sport') ---
+TEXT (conflict): 'Lewis Hamilton plays the sport of baseball. Lewis Hamilton plays the sport of'
+CLEAN_TEXT:      'Lewis Hamilton plays the sport of'
+L_main=14  L_clean=6  L_min=6
+RESULT: FAIL
+
+--- row 8 (Category='Athelete Sport') ---
+TEXT (conflict): 'Tom Brady plays the sport of tennis. Tom Brady plays the sport of'
+CLEAN_TEXT:      'Tom Brady plays the sport of'
+L_main=14  L_clean=6  L_min=6
+RESULT: FAIL
+
+--- row 9 (Category='Athelete Sport') ---
+TEXT (conflict): 'Kevin Durant plays the sport of football. Kevin Durant plays the sport of'
+CLEAN_TEXT:      'Kevin Durant plays the sport of'
+L_main=14  L_clean=6  L_min=6
+RESULT: FAIL
+
+Step 2 final count: 0/10 PASSED (naive alignment valid), 10/10 FAILED (misaligned -- same bug class as GPT-2)
+
+==============================================================================
+STEP 3 -- Interpretation
+==============================================================================
+Qwen2.5-3B's tokenizer exhibits the SAME class of leading-space-sensitive behavior as GPT-2's BPE tokenizer, even though the two use completely different vocabularies. This is NOT a 'GPT-2 quirk' -- it is a structural property of byte-level BPE tokenizers in general (both GPT-2's tokenizer and Qwen's tokenizer are byte-level BPE, trained so that a leading space is folded into the token itself, e.g. ' Lionel' as one token, rather than treated as a separate whitespace token). Because whether a word is preceded by a space depends entirely on its position in the string, the BPE merge rules select a different token sequence for the *same word* depending on context. Any code that assumes 'same word => same trailing token ids, regardless of position in the string' is at risk of this bug with Qwen's tokenizer too, and the alignment must be done by finding the actual longest common prefix/suffix on token ids (or by aligning on text spans and re-tokenizing), not by naively slicing the last L_min = min(len_a, len_b) tokens.

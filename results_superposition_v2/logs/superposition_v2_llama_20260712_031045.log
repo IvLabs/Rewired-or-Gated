@@ -1,0 +1,13 @@
+2026-07-12 03:10:45,983  INFO  ===== LLAMA  mode=superposition  device=cuda =====
+2026-07-12 03:10:45,984  INFO  [heads] union set = 23 heads; node overlap: GATING (H2): same heads matter base vs instruct
+2026-07-12 03:10:47,847  WARNING  Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2026-07-12 03:11:04,627  INFO  [model] meta-llama/Llama-3.2-3B: 28L × 24H d_model=3072
+2026-07-12 03:11:04,649  INFO  [prompts] llama/base: 5 rows  (source=survival:single_token_survival_llama32_3b_base.json)
+2026-07-12 03:11:05,191  INFO    [llama/base] n=5  roles={'context': 7, 'memory': 8, 'superposition': 8}  signs={'both_pos': 10, 'ctx_pos_mem_neg': 2, 'both_neg': 11}
+2026-07-12 03:11:05,243  INFO  [llama/base] done in 19s
+2026-07-12 03:11:05,488  WARNING  Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2026-07-12 03:11:21,620  INFO  [model] meta-llama/Llama-3.2-3B-Instruct: 28L × 24H d_model=3072
+2026-07-12 03:11:21,668  INFO  [prompts] llama/instruct: 5 rows  (source=survival:single_token_survival_llama32_3b_instruct.json)
+2026-07-12 03:11:22,068  INFO    [llama/instruct] n=5  roles={'context': 9, 'memory': 9, 'superposition': 5}  signs={'both_pos': 10, 'ctx_pos_mem_neg': 2, 'both_neg': 11}
+2026-07-12 03:11:22,152  INFO  [llama/instruct] done in 17s
+2026-07-12 03:11:22,159  INFO  [llama] comparison → median Δindex=+0.0000, role changed 3/23, node overlap: GATING (H2): same heads matter base vs instruct

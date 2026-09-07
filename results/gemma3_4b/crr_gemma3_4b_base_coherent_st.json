@@ -1,0 +1,21 @@
+{
+  "_provenance": {
+    "contrast": "none_single_run",
+    "dataset": "single_token_st",
+    "n_used": 870,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "coherent",
+    "model_tag": "gemma3_4b_base"
+  },
+  "model": "gemma3_4b_base",
+  "prompt_type": "coherent",
+  "crr_behavioral": {
+    "crr": 0.996551724137931,
+    "context": 867,
+    "memory": 2,
+    "neither": 1,
+    "total": 870
+  },
+  "crr_logprob": 0.996551724137931
+}

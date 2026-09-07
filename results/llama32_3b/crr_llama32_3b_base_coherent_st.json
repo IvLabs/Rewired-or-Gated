@@ -1,0 +1,21 @@
+{
+  "_provenance": {
+    "contrast": "none_single_run",
+    "dataset": "single_token_st",
+    "n_used": 764,
+    "alias_policy": "first_single_token",
+    "code_commit": "unknown",
+    "prompt_type": "coherent",
+    "model_tag": "llama32_3b_base"
+  },
+  "model": "llama32_3b_base",
+  "prompt_type": "coherent",
+  "crr_behavioral": {
+    "crr": 0.9829842931937173,
+    "context": 751,
+    "memory": 13,
+    "neither": 0,
+    "total": 764
+  },
+  "crr_logprob": 0.9829842931937173
+}

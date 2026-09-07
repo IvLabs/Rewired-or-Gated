@@ -1,6 +1,6 @@
 # Rewired or Gated? Instruction Tuning and Knowledge-Conflict Circuits
 
-Anonymized code and data artifact for the paper *Rewired or Gated? How
+Code and data artifact for the paper *Rewired or Gated? How
 Instruction Tuning Shapes Knowledge-Conflict Circuits in LLMs*.
 
 **Models:** `Llama-3.2-3B{,-Instruct}`, `Qwen2.5-3B{,-Instruct}`, `gemma-3-4b-{pt,it}`.

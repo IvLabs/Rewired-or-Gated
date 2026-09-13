@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rewired or Gated? — How Instruction Tuning Shapes Knowledge-Conflict Circuits in LLMs</title>
+<meta name="description" content="Instruction tuning gates the knowledge-conflict circuit rather than rewiring it. A mechanistic base-vs-instruct comparison across Llama-3.2-3B, Qwen-2.5-3B and Gemma-3-4B. IvLabs, VNIT.">
+<meta property="og:title" content="Rewired or Gated?">
+<meta property="og:description" content="The same attention heads decide context-vs-memory before and after instruction tuning. Only their gain changes.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#D9DDE5;
+  --ground-deep:#C6CCD8;
+  --panel:#FBFBFC;
+  --ink:#14171E;
+  --ink-soft:#545C6B;
+  --line:#B6BDCB;
+  --ctx:#1F6F7A;
+  --mem:#B0671A;
+  --sup:#7B4B8A;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+a{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--sup);outline-offset:3px}
+
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+.narrow{max-width:660px}
+
+h1,h2,h3,.dnum,.chip,nav a,th{font-family:var(--display)}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.12;margin:0 0 .5rem;font-weight:600;letter-spacing:-.015em}
+h3{font-size:1.05rem;margin:0 0 .35rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0 0 1rem}
+section{padding:clamp(48px,7vw,86px) 0;border-top:1px solid var(--line)}
+
+/* ---------- masthead ---------- */
+header{padding:clamp(34px,6vw,60px) 0 clamp(30px,5vw,48px)}
+.venue{font-family:var(--display);font-size:.82rem;color:var(--ink-soft);margin:0 0 1.6rem}
+h1{
+  font-weight:800;letter-spacing:-.038em;line-height:.94;
+  font-size:clamp(2.6rem,8.4vw,5.2rem);margin:0 0 .1em;
+  font-variation-settings:'wdth' 90;
+}
+h1 .q{display:block;font-weight:400;font-size:.34em;letter-spacing:-.01em;line-height:1.25;max-width:22ch;margin-top:.55em;color:var(--ink-soft)}
+.authors{margin:1.5rem 0 .2rem;max-width:56ch;line-height:1.5}
+.authors .me{white-space:nowrap}
+.affil{color:var(--ink-soft);font-size:.95rem;margin:.15rem 0 0}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:1.8rem 0 0;padding:0;list-style:none}
+.links a{
+  display:inline-block;font-family:var(--display);font-size:.92rem;font-weight:600;
+  padding:.5rem 1.05rem;border:1.5px solid var(--ink);border-radius:2px;
+  text-decoration:none;background:transparent;transition:background .15s,color .15s;
+}
+.links a:hover{background:var(--ink);color:var(--ground)}
+.links a.filled{background:var(--ink);color:var(--ground)}
+.links a.filled:hover{background:transparent;color:var(--ink)}
+
+/* ---------- thesis line ---------- */
+.thesis{
+  font-size:clamp(1.22rem,3.1vw,1.72rem);line-height:1.38;max-width:26ch;
+  font-family:var(--display);font-weight:400;letter-spacing:-.015em;margin:0;
+}
+.thesis b{font-weight:600}
+.ctx{color:var(--ctx)}.mem{color:var(--mem)}.sup{color:var(--sup)}
+
+/* ---------- panels ---------- */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,3vw,26px)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* ---------- demo ---------- */
+.demo{display:grid;grid-template-columns:1.15fr .85fr;gap:0;border:1px solid var(--ink);border-radius:3px;overflow:hidden;background:var(--panel)}
+@media(max-width:760px){.demo{grid-template-columns:1fr}}
+.demo-l{padding:clamp(18px,3vw,28px)}
+.demo-r{padding:clamp(18px,3vw,28px);background:var(--ground-deep);border-left:1px solid var(--ink)}
+@media(max-width:760px){.demo-r{border-left:none;border-top:1px solid var(--ink)}}
+.ctrl{margin-bottom:1.15rem}
+.ctrl-name{font-family:var(--display);font-size:.78rem;font-weight:600;color:var(--ink-soft);margin-bottom:.4rem}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:2px;overflow:hidden;flex-wrap:wrap}
+.seg button{
+  font-family:var(--display);font-size:.88rem;font-weight:600;
+  padding:.42rem .85rem;border:0;background:transparent;color:var(--ink);cursor:pointer;
+  border-right:1.5px solid var(--ink);transition:background .12s,color .12s;
+}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--panel)}
+.prompt{
+  font-family:var(--display);font-size:1rem;line-height:1.55;
+  background:var(--ground);border:1px solid var(--line);padding:.85rem .95rem;border-radius:2px;
+  min-height:8.4em;
+}
+.prompt .false{color:var(--mem);font-weight:600;border-bottom:2px solid var(--mem)}
+.prompt .slot{border-bottom:2px solid var(--ink);padding:0 1.6em}
+.readout-lab{font-family:var(--display);font-size:.78rem;font-weight:600;color:var(--ink-soft)}
+.answer{font-family:var(--display);font-weight:800;letter-spacing:-.03em;font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.05;margin:.2rem 0 .1rem;transition:color .2s}
+.answer.is-ctx{color:var(--ctx)}.answer.is-mem{color:var(--mem)}
+.verdictline{font-size:.95rem;color:var(--ink-soft);margin:0 0 1.2rem;min-height:3em}
+.meter{height:12px;background:var(--panel);border:1px solid var(--ink);border-radius:2px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--ctx);transition:width .35s cubic-bezier(.2,.7,.3,1)}
+.meter-row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--display);font-size:.8rem;margin-bottom:.3rem;color:var(--ink-soft)}
+.meter-row b{font-size:1.15rem;color:var(--ink)}
+
+/* ---------- claims ---------- */
+.claim{border-top:2px solid var(--ink);padding-top:.85rem}
+.claim .tag{font-family:var(--display);font-weight:800;font-size:.8rem;letter-spacing:.02em}
+.claim p{font-size:.98rem;margin:.35rem 0 0;color:var(--ink-soft)}
+
+/* ---------- schematic ---------- */
+.sch{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:620px){.sch{grid-template-columns:1fr}}
+.sch-box{background:var(--panel);border:1px solid var(--line);padding:16px 14px 12px;border-radius:3px}
+.sch-title{font-family:var(--display);font-weight:600;font-size:.9rem;margin-bottom:.1rem}
+.sch-sub{font-size:.8rem;color:var(--ink-soft);margin-bottom:14px;font-family:var(--display)}
+.heads{display:flex;gap:10px;align-items:flex-end;height:120px}
+.head{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px}
+.bar{width:100%;border-radius:1px 1px 0 0;transition:height .45s cubic-bezier(.2,.7,.3,1)}
+.hlab{font-family:var(--display);font-size:.62rem;color:var(--ink-soft);white-space:nowrap}
+.sch-out{font-family:var(--display);font-size:.85rem;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+
+/* ---------- band chart ---------- */
+.band{position:relative;height:auto;margin:26px 0 8px}
+.band-zones{position:relative;height:26px;display:flex;border:1px solid var(--ink);border-radius:2px;overflow:hidden}
+.z{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:.72rem;color:var(--ink-soft)}
+.z1{width:30%;background:repeating-linear-gradient(45deg,#C9CFDB,#C9CFDB 4px,#D9DDE5 4px,#D9DDE5 8px)}
+.z2{width:30%;background:#E6E9EF;border-left:1px solid var(--ink);border-right:1px solid var(--ink)}
+.z3{width:40%;background:var(--panel)}
+.fam-row{position:relative;height:44px;border-bottom:1px solid var(--line)}
+.fam-row:last-child{border-bottom:0}
+.fam-name{position:absolute;left:0;top:11px;font-family:var(--display);font-weight:600;font-size:.9rem}
+.dot{position:absolute;top:10px;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.dot.node{background:var(--sup)}
+.dot.edge{background:var(--panel)}
+.dot span{position:absolute;top:24px;font-family:var(--display);font-size:.72rem;white-space:nowrap;color:var(--ink-soft)}
+.axis{display:flex;justify-content:space-between;font-family:var(--display);font-size:.72rem;color:var(--ink-soft);margin-top:4px}
+.key{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--display);font-size:.8rem;color:var(--ink-soft);margin-top:14px}
+.key i{display:inline-block;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink);margin-right:6px;vertical-align:-1px}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:430px}
+th,td{text-align:right;padding:.5rem .6rem;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.76rem;font-weight:600;color:var(--ink-soft);border-bottom:1.5px solid var(--ink)}
+tbody tr:last-child td{border-bottom:1.5px solid var(--ink)}
+td.big{color:var(--mem);font-weight:600}
+caption{caption-side:bottom;text-align:left;font-size:.85rem;color:var(--ink-soft);padding-top:.7rem;line-height:1.5}
+
+/* ablation grid */
+.abl{display:grid;grid-template-columns:auto repeat(6,minmax(38px,1fr));gap:3px;font-family:var(--display);font-size:.72rem;min-width:470px}
+.abl .h{color:var(--ink-soft);font-size:.66rem;line-height:1.15;align-self:end;padding-bottom:4px}
+.abl .r{align-self:center;padding-right:8px;white-space:nowrap;font-weight:600}
+.cell{aspect-ratio:1.5;display:flex;align-items:center;justify-content:center;border-radius:2px;color:var(--panel);font-weight:600}
+
+/* formula */
+.eq{background:var(--panel);border-left:3px solid var(--sup);padding:14px 16px;margin:1.2rem 0;font-family:var(--display);font-size:1rem;overflow-x:auto}
+.eq .frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 .25em}
+.eq .frac span:first-child{border-bottom:1.5px solid var(--ink);padding:0 .35em}
+.eq .frac span:last-child{padding:0 .35em}
+
+.method{border-left:2px solid var(--line);padding-left:14px}
+.method h3{font-size:.95rem}
+.method p{font-size:.9rem;color:var(--ink-soft);margin:0}
+
+.lim li{margin-bottom:.55rem;color:var(--ink-soft)}
+pre.bib{background:var(--panel);border:1px solid var(--line);padding:16px;overflow-x:auto;font-size:.8rem;line-height:1.5;border-radius:3px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+footer{border-top:1px solid var(--line);padding:34px 0 60px;font-size:.9rem;color:var(--ink-soft)}
+.note{font-size:.86rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="venue">IvLabs, Visvesvaraya National Institute of Technology · Mechanistic interpretability</p>
+    <h1>Rewired<br>or Gated?
+      <span class="q">Instruction tuning changes how a model arbitrates between the prompt and its own memory. We asked whether it changes the circuit that does the arbitrating.</span>
+    </h1>
+
+    <p class="authors">
+      <span class="me">Shubham Pandere*</span>, <span class="me">Gautam Ranka*</span>, <span class="me">Ritika Varshney</span>,
+      <span class="me">Navya Deshmukh†</span>, <span class="me">Roushni Sareen†</span>, <span class="me">Roshan Kumar Singh</span>
+    </p>
+    <p class="affil">* Equal contribution &nbsp;&nbsp;† Equal third author</p>
+
+    <ul class="links">
+      <li><a class="filled" href="paper.pdf">Read the paper</a></li>
+      <li><a href="https://github.com/IvLabs/Rewired-or-Gated">Code on GitHub</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#cite">Cite</a></li>
+    </ul>
+  </div>
+</header>
+
+<section id="demo" style="border-top:2px solid var(--ink)">
+  <div class="wrap">
+    <p class="thesis" style="margin-bottom:2rem">The same <b class="ctx">context</b> and <b class="mem">memory</b> heads decide, before and after tuning. Only their <b>gain</b> changes.</p>
+
+    <div class="demo">
+      <div class="demo-l">
+        <div class="ctrl">
+          <div class="ctrl-name">Model family</div>
+          <div class="seg" role="group" aria-label="Model family">
+            <button data-fam="llama" aria-pressed="true">Llama-3.2-3B</button>
+            <button data-fam="qwen" aria-pressed="false">Qwen-2.5-3B</button>
+            <button data-fam="gemma" aria-pressed="false">Gemma-3-4B</button>
+          </div>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-name">Checkpoint</div>
+          <div class="seg" role="group" aria-label="Checkpoint">
+            <button data-var="base" aria-pressed="true">base</button>
+            <button data-var="inst" aria-pressed="false">instruct</button>
+          </div>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-name">How the false fact is delivered</div>
+          <div class="seg" role="group" aria-label="Conflict form">
+            <button data-form="subst" aria-pressed="true">terse swap</button>
+            <button data-form="coher" aria-pressed="false">coherent passage</button>
+          </div>
+        </div>
+        <div class="ctrl-name">Prompt</div>
+        <div class="prompt" id="prompt"></div>
+      </div>
+
+      <div class="demo-r">
+        <div class="readout-lab">Next token</div>
+        <div class="answer" id="answer">basketball</div>
+        <p class="verdictline" id="verdict"></p>
+
+        <div class="meter-row"><span>Contextual Reliance Rate</span><b id="crrnum">0.675</b></div>
+        <div class="meter"><i id="crrbar" style="width:67.5%"></i></div>
+        <p class="note" style="margin-top:.7rem">Share of conflict prompts where the model answers with the injected context instead of its parametric memory.</p>
+      </div>
+    </div>
+    <p class="note narrow" style="margin-top:1rem">Every number here is the measured CRR from Table 2 of the paper. The displayed token is the majority behaviour at that rate, not a single sampled generation.</p>
+  </div>
+</section>
+
+<section id="claims">
+  <div class="wrap">
+    <h2>Three claims</h2>
+    <p class="narrow" style="margin-bottom:2rem">We phrase the question as a binary — does tuning <em>rewire</em> the circuit, so that a largely new set of heads becomes critical, or merely <em>gate</em> it, so the same heads get reweighted? Five independent methods converge on gating.</p>
+    <div class="grid3">
+      <div class="claim">
+        <div class="tag">C1 — Gating, not rewiring</div>
+        <p>The same heads, in the same roles, wired in largely the same way, carry the decision. Node overlap between base and instruct sits at J = 0.60–0.82.</p>
+      </div>
+      <div class="claim">
+        <div class="tag">C2 — Memory-ward robustness</div>
+        <p>Tuning pushes behaviour <em>towards</em> parametric memory. Instruct models reject a terse counterfactual far more than base ones — the opposite of naive user-following. The effect vanishes when the falsehood is written well.</p>
+      </div>
+      <div class="claim">
+        <div class="tag">C3 — Localization preserved</div>
+        <p>Conflict heads stay in the upper half of the network in both variants. The median conflict-head layer moves by at most two layers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mechanism">
+  <div class="wrap">
+    <h2>What gating looks like</h2>
+    <p class="narrow" style="margin-bottom:1.6rem">A rewired circuit would recruit different heads. A gated one keeps the roster and turns the faders. Below is the claim as a diagram — head identity, role and layer position are preserved across tuning; the only thing that moves is how loudly each head pulls.</p>
+
+    <div class="sch">
+      <div class="sch-box">
+        <div class="sch-title">Base model</div>
+        <div class="sch-sub">late layers, upper half of the network</div>
+        <div class="heads" id="heads-base"></div>
+        <div class="sch-out">answer &rarr; <span class="ctx" style="font-weight:600">basketball</span> · follows the false context</div>
+      </div>
+      <div class="sch-box">
+        <div class="sch-title">Instruct model</div>
+        <div class="sch-sub">same heads, same layers, new gains</div>
+        <div class="heads" id="heads-inst"></div>
+        <div class="sch-out">answer &rarr; <span class="mem" style="font-weight:600">football</span> · rejects the false context</div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:.9rem">Schematic of the claim, not measured per-head gains. The measured quantities are in the next two sections.</p>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <h2>The verdict, on one axis</h2>
+    <p class="narrow" style="margin-bottom:.6rem">Overlap bands were fixed in advance: above 0.6 counts as stable, below 0.3 as rewired. Node overlap decides gating versus rewiring. Edge overlap can only sub-type a gating result — it cannot overturn it.</p>
+
+    <div class="band">
+      <div class="band-zones">
+        <div class="z z1">rewired</div>
+        <div class="z z2">partial</div>
+        <div class="z z3">stable — gating</div>
+      </div>
+      <div style="position:relative;margin-top:10px" id="bandrows"></div>
+      <div class="axis"><span>0.0</span><span>0.3</span><span>0.6</span><span>1.0</span></div>
+      <div class="key">
+        <span><i style="background:var(--sup)"></i>node overlap — which heads matter (J@10)</span>
+        <span><i style="background:var(--panel)"></i>edge overlap — how they are wired (J@50)</span>
+      </div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:2.4rem">
+      <table>
+        <caption>Four-way placement. Node overlap is high everywhere, so every family is gating. Edge overlap sub-types Llama as strict and leaves Qwen and Gemma ambiguous — in the partial band, but nowhere near rewired.</caption>
+        <thead><tr><th>Family</th><th>node J</th><th>edge J@50</th><th>|ΔCRR|</th><th style="text-align:right">Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Llama-3.2-3B</td><td>0.74</td><td>0.61</td><td>0.41</td><td>strict gating</td></tr>
+          <tr><td>Qwen-2.5-3B</td><td>0.60</td><td>0.39</td><td>0.43</td><td>gating (ambiguous edges)</td></tr>
+          <tr><td>Gemma-3-4B</td><td>0.82</td><td>0.54</td><td>0.50</td><td>gating (ambiguous edges)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="behaviour">
+  <div class="wrap">
+    <h2>Skepticism you can write around</h2>
+    <div class="grid2" style="align-items:start">
+      <div>
+        <p>Instruction tuning produces a large behavioural change, but not the one the naive prior predicts. On the terse substitution conflict, contextual reliance <em>drops</em> in all three families: instruct models are markedly more likely to reject the injected falsehood and fall back on what their weights already say.</p>
+        <p>That is the calibrated response, not disobedience — the injected context is false. But the skepticism is a property of <em>framing</em>, not of trust. Deliver the same falsehood as a fluent, evidential passage and the base–instruct gap nearly disappears; both variants follow it at 0.88–1.00.</p>
+        <p class="note">The robustness that tuning buys is real but narrow. It defends against one-line prompt injection and does nothing against well-written misinformation.</p>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <caption>Contextual Reliance Rate, base versus instruct. All substitution deltas are significant at p &lt; 10⁻¹⁵ (z = 16–22). Coherent deltas are small.</caption>
+          <thead><tr><th>Family</th><th>Form</th><th>base</th><th>instruct</th><th>Δ</th></tr></thead>
+          <tbody>
+            <tr><td>Llama</td><td>terse</td><td>0.675</td><td>0.263</td><td class="big">−0.412</td></tr>
+            <tr><td>Llama</td><td>coherent</td><td>0.983</td><td>0.954</td><td>−0.029</td></tr>
+            <tr><td>Qwen</td><td>terse</td><td>0.645</td><td>0.220</td><td class="big">−0.425</td></tr>
+            <tr><td>Qwen</td><td>coherent</td><td>1.000</td><td>0.878</td><td>−0.122</td></tr>
+            <tr><td>Gemma</td><td>terse</td><td>0.870</td><td>0.369</td><td class="big">−0.501</td></tr>
+            <tr><td>Gemma</td><td>coherent</td><td>0.997</td><td>0.992</td><td>−0.005</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="methods">
+  <div class="wrap">
+    <h2>Five views, one verdict</h2>
+    <p class="narrow" style="margin-bottom:1.8rem">No single attribution method is decisive. Node screens are cheap but correlational; edge methods see wiring but not causation; superposition sees function but not location; path patching only corroborates the node screen. Causal ablation is the one interventional test, and only for the heads it targets. So we triangulate.</p>
+
+    <div class="grid2" style="gap:26px 34px">
+      <div class="method">
+        <h3>Node attribution — LDS</h3>
+        <p>A first-order logit-derivative saliency for every (layer, head) against the contrast target L = logit<sub>ctx</sub> − logit<sub>mem</sub>. A head scores highly when a small change in its output slides the model between the context and memory answers.</p>
+      </div>
+      <div class="method">
+        <h3>Edge attribution — EAP-IG</h3>
+        <p>Edge attribution patching with integrated gradients over the full 87k–390k edge graph, five integration steps. Run on the terse form only: the coherent passage repeats the distractor, which breaks EAP-IG's prefix/suffix alignment.</p>
+      </div>
+      <div class="method">
+        <h3>Superposition index</h3>
+        <p>Each head gets a role on a continuum from pure memory to pure context, computed from an independent direct-logit-attribution pull ratio. Only 2–3 heads per family flip role across tuning; mean drift is near zero and slightly memory-ward.</p>
+      </div>
+      <div class="method">
+        <h3>Path patching &amp; causal ablation</h3>
+        <p>PH3-style path patching cross-checks the LDS ranking on the top-20 heads (Spearman 0.62–0.85, positive in all six cells). Ablation then amplifies or suppresses the selected heads and re-measures CRR against an a-priori sign.</p>
+      </div>
+    </div>
+
+    <div class="eq" role="math" aria-label="S equals context pull minus memory pull, divided by absolute context pull plus absolute memory pull">
+      S =
+      <span class="frac"><span>ctx_pull − mem_pull</span><span>|ctx_pull| + |mem_pull|</span></span>
+      ,&nbsp; S ∈ [−1, 1]
+    </div>
+    <p class="note narrow" style="margin-top:-.4rem">+1 marks a pure context head, −1 a pure memory head, and the middle of the range is superposition: one head doing both jobs at once.</p>
+  </div>
+</section>
+
+<section id="ablation">
+  <div class="wrap">
+    <h2>36 out of 36</h2>
+    <p class="narrow" style="margin-bottom:1.6rem">Six interventions across six model variants. Suppressing context heads drives contextual reliance down; amplifying them drives it up; suppressing memory heads drives it up. Every cell matches the sign we predicted in advance (binomial p ≈ 2⁻³⁶).</p>
+
+    <div class="tablewrap">
+      <div class="abl" id="abl" role="img" aria-label="Causal ablation heatmap: change in CRR for six interventions across six model variants, all 36 matching the predicted sign."></div>
+    </div>
+    <p class="note" style="margin-top:1rem">ΔCRR after each intervention. The circuit is sparse and asymmetric — suppressing just the five top context heads collapses context-following in the base models, while the five memory heads move CRR far less. Ablating an equal number of <em>random</em> late-layer heads moves CRR by −0.03 to +0.02, so the effect belongs to the heads LDS selects, not to poking late attention in general.</p>
+  </div>
+</section>
+
+<section id="implications">
+  <div class="wrap">
+    <div class="grid2" style="gap:34px">
+      <div>
+        <h2>Why it matters</h2>
+        <p>Because the conflict circuit is preserved rather than rebuilt, mechanistic tools calibrated on a base checkpoint — head-level steering, pruning methods such as PH3, superposition probes — should carry over to the deployed instruct sibling. Safety and interpretability work can be done on the cheaper, openly released base model and still describe the shipped one.</p>
+        <p>For retrieval and agent pipelines, the practical reading is narrower than it first appears. Instruct models resist terse, unsupported counterfactuals — a common injection pattern — yet remain fully persuadable by a fluent false passage. The vulnerability moves rather than closes. The same skepticism can also under-trust a legitimate but tersely stated retrieved fact, which can be mitigated either by elaborating the evidence or by intervening directly on the context heads.</p>
+      </div>
+      <div>
+        <h2>Limitations</h2>
+        <ul class="lim">
+          <li><b>Scale.</b> Experiments cover 3–4B models. Whether gating holds at substantially larger scale is open.</li>
+          <li><b>Substitution-only edges.</b> The coherent behavioural effect has a node-level but no edge-level mechanistic counterpart.</li>
+          <li><b>Metric scope.</b> Facts are restricted to single-token answers under each model's own tokenizer; CRR is a next-token measure, so multi-token and free-generation following are out of scope.</li>
+          <li><b>Single corpus.</b> Four relation domains, all derived from ParaConflict. A naturally occurring conflict corpus and held-out-domain attribution remain future work.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cite">
+  <div class="wrap">
+    <h2>Cite this work</h2>
+    <pre class="bib">@misc{pandere2025rewired,
+  title  = {Rewired or Gated? How Instruction Tuning Shapes
+            Knowledge-Conflict Circuits in LLMs},
+  author = {Pandere, Shubham and Ranka, Gautam and Varshney, Ritika
+            and Deshmukh, Navya and Sareen, Roushni and Singh, Roshan Kumar},
+  year   = {2025},
+  note   = {IvLabs, Visvesvaraya National Institute of Technology},
+  url    = {https://github.com/IvLabs/Rewired-or-Gated}
+}</pre>
+    <p class="note">Code, attribution outputs and figure scripts: <a href="https://github.com/IvLabs/Rewired-or-Gated">github.com/IvLabs/Rewired-or-Gated</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>We thank our lab advisor, Dr. Shital Chiddarwar, for her support and guidance throughout our work in the lab.</p>
+    <p>This work analyzes publicly available pre-trained models on synthetic factual prompts. The head-level interventions used here for analysis could also steer a model toward or away from injected context; we report them to support interpretability and robustness research.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- data: CRR from Table 2 ---------- */
+  var CRR = {
+    llama:{subst:{base:0.675,inst:0.263},coher:{base:0.983,inst:0.954}},
+    qwen: {subst:{base:0.645,inst:0.220},coher:{base:1.000,inst:0.878}},
+    gemma:{subst:{base:0.870,inst:0.369},coher:{base:0.997,inst:0.992}}
+  };
+  var FAMNAME={llama:"Llama-3.2-3B",qwen:"Qwen-2.5-3B",gemma:"Gemma-3-4B"};
+
+  var SUBST = 'Lionel Messi plays the sport of <span class="false">basketball</span>. Lionel Messi plays the sport of <span class="slot"></span>';
+  var COHER = 'Lionel Messi is a professional <span class="false">basketball</span> player, drafted into the NBA and celebrated for his play on the court. Messi plays the sport of <span class="slot"></span>';
+
+  var state={fam:"llama",variant:"base",form:"subst"};
+
+  var $prompt=document.getElementById("prompt"),
+      $answer=document.getElementById("answer"),
+      $verdict=document.getElementById("verdict"),
+      $crrnum=document.getElementById("crrnum"),
+      $crrbar=document.getElementById("crrbar");
+
+  function render(){
+    $prompt.innerHTML = state.form==="subst" ? SUBST : COHER;
+    var v = CRR[state.fam][state.form][state.variant];
+    var followsCtx = v >= 0.5;
+    $answer.textContent = followsCtx ? "basketball" : "football";
+    $answer.className = "answer " + (followsCtx ? "is-ctx" : "is-mem");
+    $crrnum.textContent = v.toFixed(3);
+    $crrbar.style.width = (v*100).toFixed(1)+"%";
+    $crrbar.style.background = followsCtx ? "var(--ctx)" : "var(--mem)";
+
+    var name=FAMNAME[state.fam], who=state.variant==="base"?"The base checkpoint":"The instruction-tuned checkpoint";
+    var msg;
+    if(state.form==="subst"){
+      msg = followsCtx
+        ? who+" of "+name+" takes the one-line falsehood at face value and answers from context."
+        : who+" of "+name+" refuses the terse, unsupported claim and falls back on its parametric memory.";
+    } else {
+      msg = followsCtx
+        ? who+" of "+name+" is persuaded by the evidential passage — tuning buys almost no protection here."
+        : who+" of "+name+" still rejects the passage.";
+    }
+    $verdict.textContent = msg;
+  }
+
+  document.querySelectorAll(".seg button").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var key = btn.dataset.fam?"fam":btn.dataset.var?"variant":"form";
+      var val = btn.dataset.fam||btn.dataset.var||btn.dataset.form;
+      state[key]=val;
+      btn.parentNode.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed","false");});
+      btn.setAttribute("aria-pressed","true");
+      render();
+    });
+  });
+  render();
+
+  /* ---------- schematic head faders ---------- */
+  var HEADS=[
+    {l:"L22 H7",role:"ctx",base:.92,inst:.38},
+    {l:"L23 H2",role:"ctx",base:.78,inst:.30},
+    {l:"L24 H5",role:"sup",base:.55,inst:.60},
+    {l:"L25 H1",role:"mem",base:.34,inst:.80},
+    {l:"L26 H9",role:"mem",base:.28,inst:.95}
+  ];
+  var COL={ctx:"var(--ctx)",mem:"var(--mem)",sup:"var(--sup)"};
+  function drawHeads(id,key){
+    var el=document.getElementById(id);
+    el.innerHTML = HEADS.map(function(h){
+      return '<div class="head"><div class="bar" style="height:'+(h[key]*100)+'%;background:'+COL[h.role]+'"></div><div class="hlab">'+h.l+'</div></div>';
+    }).join("");
+  }
+  drawHeads("heads-base","base");
+  drawHeads("heads-inst","inst");
+
+  /* ---------- band chart ---------- */
+  var BAND=[
+    {fam:"Llama-3.2",node:0.74,edge:0.61},
+    {fam:"Qwen-2.5", node:0.60,edge:0.39},
+    {fam:"Gemma-3",  node:0.82,edge:0.54}
+  ];
+  document.getElementById("bandrows").innerHTML = BAND.map(function(r){
+    return '<div class="fam-row">'+
+      '<div class="fam-name">'+r.fam+'</div>'+
+      '<div class="dot edge" style="left:'+(r.edge*100)+'%"><span>'+r.edge.toFixed(2)+'</span></div>'+
+      '<div class="dot node" style="left:'+(r.node*100)+'%"><span>'+r.node.toFixed(2)+'</span></div>'+
+    '</div>';
+  }).join("");
+
+  /* ---------- ablation heatmap (Figure 5) ---------- */
+  var COLS=["amplify<br>context","mean-ablate<br>context","zero-ablate<br>context","amplify<br>memory","mean-ablate<br>memory","zero-ablate<br>memory"];
+  var ROWS=[
+    ["Llama base",[0.13,-0.31,-0.32,-0.02,0.09,0.04]],
+    ["Llama inst",[0.09,-0.09,-0.09,-0.07,0.04,0.17]],
+    ["Qwen base",[0.12,-0.41,-0.38,-0.30,0.19,0.24]],
+    ["Qwen inst",[0.07,-0.12,-0.12,-0.09,0.15,0.20]],
+    ["Gemma base",[0.07,-0.83,-0.78,-0.40,0.10,0.10]],
+    ["Gemma inst",[0.17,-0.34,-0.33,-0.26,0.24,0.28]]
+  ];
+  function shade(v){
+    var t=Math.min(Math.abs(v)/0.83,1);
+    var a=0.14+t*0.86;
+    return v<0 ? "rgba(31,111,122,"+a+")" : "rgba(176,103,26,"+a+")";
+  }
+  var html='<div></div>'+COLS.map(function(c){return '<div class="h">'+c+'</div>';}).join("");
+  ROWS.forEach(function(r){
+    html+='<div class="r">'+r[0]+'</div>';
+    r[1].forEach(function(v){
+      var light=Math.abs(v)<0.16;
+      html+='<div class="cell" style="background:'+shade(v)+';color:'+(light?"var(--ink)":"#FBFBFC")+'">'+(v>0?"+":"")+v.toFixed(2)+'</div>';
+    });
+  });
+  document.getElementById("abl").innerHTML=html;
+})();
+</script>
+</body>
+</html>
